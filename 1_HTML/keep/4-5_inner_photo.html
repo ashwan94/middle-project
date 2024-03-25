@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <!-- 아래에서 모달이 올라오게 하는 방법은 - transform: translateY(3%); <-이 아이를 건드리면 됌  -->
+    <style>
+        .modal.fade .modal-dialog {
+            transform: translateY(3%);
+            transition: transform 0.5s ease-out;
+        }
+
+        .modal.fade.show .modal-dialog {
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary m-3 border">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">로고</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">검색키워드</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">날짜</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                인원
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link disabled" aria-disabled="true">실시간 인기 검색어</a>
+                        </li>
+                    </ul>
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="찜" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">로그인</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+        <div class="modal fade bg-white" id="exampleModalToggle" aria-hidden="true"
+            aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-fullscreen-down">
+                    <div class="modal-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="me.jpg" alt="" style="width: 400px;" class="p-1">
+                        <img src="me.jpg" alt="" style="width: 200px;" class="p-2">
+                        <img src="me.jpg" alt="" style="width: 200px;" class="p-2">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">modal 예시</button>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="./source/out_link/Util.js"></script>
+        <script>
+            // 로그인된 사용자 계정 정보 가져옴
+            let loginUser = getLoginAccount();
+            // 모달화면
+        </script>
+</body>
+
+</html>

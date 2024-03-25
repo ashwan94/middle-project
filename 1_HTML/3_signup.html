@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <style>
+        #checkId {
+            font-size: x-small;
+        }
+
+        #checkPw {
+            font-size: x-small;
+        }
+
+        #reCheckPw {
+            font-size: x-small;
+        }
+
+        #checkNN {
+            font-size: x-small;
+        }
+    </style>
+</head>
+
+<body class="text-center">
+    <div class="d-flex justify-content-start" style="margin-left: 300px; margin-bottom: 100px;">
+        <a class="navbar-brand" href="#"><img class="logo mt-3" style="width:50px;" src="./source/img/TRaM_logo.png" alt="이미지" id="logoMain"></a>
+    </div>
+    <div class="container">
+        <div class="form-control">
+            <h2>회원가입</h2>
+            <div class="p-2 input-form-box" style="text-align: left; margin-left: 32%;">
+                <h6>아이디 (이메일 형식)*</h6>
+                <input type="email" style="width: 395px;" id="userID" placeholder="example@TRaM.co.kr">
+                <button id="doubleCheck" type="button">중복확인</button>
+                <div id="checkId"></div>
+            </div>
+            <div class="p-2 input-form-box" style="text-align: left; margin-left: 32%;">
+                <h6>닉네임*</h6>
+                <input type="text" style="width: 480px;" id="nickName" placeholder="하와이안훌라춤을추는미영이">
+                <div id="checkNN"></div>
+            </div>
+            <div class="p-2 input-form-box" style="text-align: left; margin-left: 32%;">
+                <h6>연락처*</h6>
+                <input type="text" style="width: 480px;" id="phone" placeholder="'-' 없이 입력해주세요">
+                <div id="checkNN"></div>
+            </div>
+            <div class="p-2 input-form-box" style="text-align: left; margin-left: 32%;">
+                <h6>비밀번호*</h6>
+                <input type="password" style="width: 480px;" id="userPW">
+                <div id="checkPw"></div>
+            </div>
+            <div class="p-2 input-form-box" style="text-align: left; margin-left: 32%;">
+                <h6>비밀번호 확인*</h6>
+                <input type="password" style="width: 480px;" id="pwCheck">
+                <div id="reCheckPw"></div>
+            </div>
+            <div class="p-3 m-3">
+                <button id="cancel" type="button">취소</button>
+                <button id="check" type="button">확인</button>
+            </div>
+        </div>
+    </div>
+</body>
+<!-- footer 회사 정보 등 -->
+    <footer style="background-color: rgb(250,250,250);" class="foot p-5 mt-3">
+        <div class="row ms-3">
+            <div class="col-1"></div>
+            <div class="col-5">
+                <div class="mb-1" style="font-size:18px; font-weight: bolder;">고객센터</div>
+                <div style="font-size:14px; font-weight: 200;">오전 9시 ~ 새벽 3시 운영</div>
+                <!-- // TODO 전화번호 옆에 전화기 아이콘 삽입하기. Font Awesome 에서 찾아보라고 함 -->
+                <div class="btn btn-outline-secondary mt-3"><i class="bi bi-phone"></i>1677-6290</div>
+                <div class="btn btn-outline-secondary mt-3 ms-3">카톡 문의</div>
+            </div>
+            <div class="col-1">
+                <div style="font-size:18px; font-weight: bolder;">회사</div>
+                <div class="mt-1">
+                    <a href="https://www.nextit.or.kr/origin.html"
+                        style="font-size:14px; font-weight: 200; color:grey;">회사 소개</a>
+                </div>
+            </div>
+            <div class="col-1">
+                <div style="font-size:18px; font-weight: bolder;">서비스</div>
+                <div class="mt-1">
+                    <a href="https://www.nextit.or.kr/origin.html"
+                        style="font-size:14px; font-weight: 200; color:grey;">공지사항</a>
+                </div>
+                <div class="mt-1">
+                    <a href="https://www.nextit.or.kr/origin.html"
+                        style="font-size:14px; font-weight: 200; color:grey;">FAQ</a>
+                </div>
+            </div>
+            <div class="col-1">
+                <div style="font-size:18px; font-weight: bolder;">혜택</div>
+                <a href="https://www.nextit.or.kr/origin.html"
+                    style="font-size:14px; font-weight: 200; color:grey;">마일리지 사용</a>
+                <div class="mt-1">
+                    <a href="https://www.nextit.or.kr/origin.html"
+                        style="font-size:14px; font-weight: 200; color:grey;">VIP 라운지</a>
+                </div>
+                <div class="mt-1">
+                    <a href="https://www.nextit.or.kr/origin.html"
+                        style="font-size:14px; font-weight: 200; color:grey;">쿠폰 사용 안내</a>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-1"></div>
+            <div class="col ms-4 mt-4" style="font-size:11px;">
+                <span>
+                    (주)트램<br>
+                    주소 : 대전 중구 계룡로 825 희영빌딩 2층 넥스트아이티교육센터 현관비밀번호:0909 | 대표이사 : 안승환 | 사업자등록번호 : 713-26-00858
+                    <a href="https://bizno.net/article/7132600858">사업자정보확인</a><br>
+                    전자우편주소 : letmeknow@tram.co.kr | 통신판매번호 : 2021-중국심천-0019 | 관광사업자 등록번호 : 제1025-24호 | 전화번호 : 1677-6290
+                    | 호스팅서비스제공자에 상호 표시 : (주)트램<br>
+                    (주)트램은 통신중개판매자로서 통신판매의 당사자가 아니며, 상품의 예약, 이용 및 환불 등과 관련된 의무와 책임은 각 판매자에게 있으므로 저희에게 제발 연락하지 말아주세요.
+                </span>
+            </div>
+        </div>
+        <div class="row mt-3 ms-3">
+            <div class="col-1"></div>
+            <span class="col-1" style="font-size:11px;">
+                <a href="#">이용 약관</a>
+            </span>
+            <span class="col-1" style="font-size:11px;">
+                <a href="#">개인정보처리방침</a>
+            </span>
+            <span class="col-1 ms-3" style="font-size:11px;">
+                <a href="#">소비자 분쟁해결 기준</a>
+            </span>
+            <span class="col-2 ms-4" style="font-size:11px;">
+                <a href="#">콘텐츠산업진흥법에 의한 표시</a>
+            </span>
+        </div>
+        <div class="row mt-5 ms-3">
+            <div class="col-1"></div>
+            <div class="col-3" style="font-size: 11px;">Copyright TRaM Company Corp. All rights reserved.<br>Therefore
+                if you try to copy ours, we never negociate.</div>
+        </div>
+    </footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
+<script src="./source/out_link/Util.js"></script>
+<script>
+
+    // 회원가입 화면
+    // 확인 버튼
+    const check = document.querySelector("#check");
+    // check.addEventListener("click", function() {
+    //     window.open("2_login.html","_self");
+    // });
+    // 취소 버튼
+    const cancel = document.querySelector("#cancel");
+    cancel.addEventListener("click", function () {
+        window.open("2_login.html", "_self");
+    });
+    // 로고
+    const loginLogo = document.querySelector("#logoMain");
+    loginLogo.addEventListener("click", function () {
+        window.open("1_main.html", "_self");
+    })
+
+    // 중복 확인 버튼
+    let doubleCheck = document.querySelector("#doubleCheck");
+
+    // 사용자 아이디
+    let id = document.querySelector("#userID");
+
+    // 사용자 비밀번호
+    let pw = document.querySelector("#userPW");
+
+    // 사용자 연락처
+    let phone = document.querySelector("#phone");
+
+    // 비밀번호 확인
+    let pwCheck = document.querySelector("#pwCheck");
+
+    // 아이디가 이메일 형식이 아닐 때 빨간색으로 표시, 맞으면 초록색으로 표시
+    let checkId = document.querySelector("#checkId");
+
+    // 비밀번호가 8자 미만일 때 빨간색으로 표시
+    let checkPw = document.querySelector("#checkPw");
+
+    // 비밀번호가 비밀번호 확인과 일치하지 않을 때 빨간색으로 표시
+    let reCheckPw = document.querySelector("#reCheckPw");
+
+    // 닉네임이 없으면 빨간색으로 표시
+    let checkNN = document.querySelector("#checkNN");
+
+    // 사용자 닉네임
+    let nickName = document.querySelector("#nickName");
+
+    // 아이디 확인용 변수
+    let doubleCheckId = 0;
+
+    // 비밀번호 확인용 변수
+    let doubleCheckPw = 0;
+
+    // 회원 고유 번호
+    let cnt = JSON.parse(localStorage.getItem("TRaM")).Users.length;
+    // localStorage 에 저장된 사용자 정보 데이터 개수
+    // 추후 User_no 가 누적된 사용자 정보 이후의 숫자로 작성되도록 함
+
+    // 중복확인 버튼을 눌렀을 때 이벤트
+    doubleCheck.addEventListener("click", function () {
+        // 이메일 확인 정규 표현식
+        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$/;
+
+        // 확인하는 메소드
+        function validateEmail(email) {
+            return emailRegex.test(email);
+        }
+
+        if (validateEmail(id.value) == false) {
+            // 빨간줄 그어주기
+            checkId.style.color = "red";
+            checkId.textContent = "올바른 이메일 형식으로 입력해주세요."
+            // 아이디 부분으로 포커스
+            id.focus();
+        }
+        else {
+            // 초록줄 그어주기
+            checkId.style.color = "green";
+            checkId.textContent = "올바른 형식입니다."
+
+            // localStorage에 있는 갯수만큼 for문
+            for (let i = 0; i < localStorage.length; i++) {
+                if (id.value != localStorage.getItem("User_id")) {
+                    // 체크 변수를 바꿔줌
+                    doubleCheckId = 1;
+                }
+            }
+        }
+    })
+    // 비밀번호가 8자리 이상인지와 비밀번호 확인과 일치하는지 확인하는 메소드
+    check.addEventListener("click", function () {
+
+        // let admin = { "User_no": cnt++, "User_id": "admin", "User_pw": "12345678", "User_nickname": "관리자" };
+        // localStorage.setItem("admin", JSON.stringify(admin));
+        // console.log(localStorage);
+
+        if (pw.value.length < 6) {
+            checkPw.style.color = "red";
+            checkPw.textContent = "비밀번호를 6자리 이상으로 적어주세요.";
+        }
+        else {
+            if (pw.value != pwCheck.value) {
+                // 체크 변수를 바꿔줌
+                checkPw.style.color = "green";
+                checkPw.textContent = "비밀번호를 6자리 이상 입니다.";
+                // 체크 변수를 바꿔줌
+                reCheckPw.style.color = "red";
+                reCheckPw.textContent = "위 비밀번호와 일치하지 않습니다."
+            }
+            else {
+                // 체크 변수를 바꿔줌
+                checkPw.style.color = "green";
+                checkPw.textContent = "비밀번호를 6자리 이상 입니다.";
+                reCheckPw.style.color = "green";
+                reCheckPw.textContent = "위 비밀번호와 일치합니다."
+                doubleCheckPw = 1;
+                // console.log("?????");
+                // console.log(nickName);
+                // console.log(nickName.value);
+                // console.log(nickName.value == "");
+                if (nickName.value == "") {
+                    checkNN.style.color = "red";
+                    checkNN.textContent = "닉네임을 입력해주세요.";
+                }
+                else if (nickName.value != "") {
+                    if (doubleCheckId == 1 && doubleCheckPw == 1) {
+                        checkNN.style.color = "green";
+                        checkNN.textContent = "닉네임이 입력되었습니다.";
+                        
+                        let newUser = { "User_no": cnt++
+                                      , "User_id": id.value
+                                      , "User_pw": pw.value
+                                      , "User_nickName": nickName.value
+                                      , "User_phone": phone.value
+                                      , "User_status": "Y"
+                                      , "User_type": "G" };
+                        
+                        SignUp(newUser);
+                    }
+
+                    // TODO
+                    // 아이디 입력(email 형식) 이 localStorage 에 있는 정보와 일치하는지에 대해
+                    // 'email' 중복확인 클릭 시 localStorage 의 data 와 비교시키기
+
+                }
+
+            }
+        }
+    })
+
+
+</script>
+
+</html>

@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <style>
+        li {
+            list-style: none;
+            margin-top: 15px;
+        }
+        .logo {
+            height: 5vh;
+        }
+
+        .container {
+            width: 300px;
+            margin: 20px auto;
+            text-align: center;
+        }
+        .bbtn {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            margin: 10px;
+            border: 1px solid #ccc;
+            border-radius: 50%;
+            font-size: 24px;
+            line-height: 38px;
+            cursor: pointer;
+        }
+        .lodgment-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border: 2px solid #000;
+            margin-bottom: 20px;
+            height: 200px;
+        }
+
+        .lodgment-image {
+            width: 40%;
+        }
+
+        .lodgment-image img {
+            width: 50%;
+            height: 50%;
+            object-fit: cover;
+        }
+
+        .lodgment-info {
+            width: 55%;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .lodgment-info p {
+            margin: 5px 0;
+        }
+
+        .lodgment-price {
+            font-weight: bold;
+        }
+        .modal.fade .modal-dialog {
+            transform: translateY(3%);
+            transition: transform 0.5s ease-out;
+        }
+
+        .modal.fade.show .modal-dialog {
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary m-3">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"><img class="logo" src="" alt="이미지" id="logoMain"></a>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item mx-2">
+                        <input type="text" placeholder="검색키워드" id="searchKeyword">
+                    </li>
+                    <li class="nav-item">
+                        <input type="date">
+                        <input type="date">
+                    </li>
+                    <li class="nav-item dropdown m-2">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">인원
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <div style="text-align: center;">
+                                    <button class="bbtn" id="decreaseBtn">-</button>
+                                    <span id="personCount">1</span>
+                                    <button class="bbtn" id="increaseBtn">+</button>
+                                    <button type="button">확인</button>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <button class="border border-1" type="button" id="searchBtn">검색</button>
+                    </li>
+                    <li class="nav-item mt-1" style="margin-left: 13rem;">
+                        <a class="nav-link" href="#">실시간 인기 검색어</a>
+                    </li>
+                </ul>
+                <form class="d-flex" role="search">
+                    <button class="btn btn-outline-success border-danger text-danger" type="button"
+                        style="width: 2vw;" id="wishlist">찜</button>
+                    <button class="btn btn-outline-success border-danger text-danger" type="button"
+                        style="width: 5vw;" id="mytrip">마이트립</button>
+                    <button class="btn btn-outline-success" type="button" style="width: 5vw;" id="login">로그인</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <div class="container-fluid row border border-2 m-3 p-3" style="height: 100%; width: 98.5%;">
+        <div class="col-2">
+            <p>검색 결과 수</p>
+            <div id="grid1-1" class="border border-2" style="height: 113vh;">
+                <ul>
+                    <li>필터
+                        <ul id="filter">
+                            <li>
+                                <input type="checkbox"> 예약 가능만 보기
+                            </li>
+                            <li>숙박</li>
+                            <li>
+                                <input type="checkbox"> 호텔
+                            </li>
+                            <li>
+                                <input type="checkbox"> 민박
+                            </li>
+                            <li>
+                                <input type="checkbox"> 게하
+                            </li>
+                            <li>가격</li>
+                            <li>
+                                <form id="priceForm">
+                                    <input type="range" id="maxPrice" name="maxPrice" min="0" max="1000000" step="1000"
+                                        value="50000">
+                                    <output for="maxPrice" id="maxOutput">\50000</output><br>
+                                    <button type="submit">검색</button>
+                                </form>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-9" style=" margin-top: 40px;" id="lodgmentSet">
+            <div class="row border border-2 mb-4" style="height: 36vh;">
+                <div class="col-3 border border-2">
+                    <a href="#"><img class="img-fluid" src="" alt="이미지"></a>
+                </div>
+                <div class="col-8" style="text-align: center;">
+                    <div class="float-start m-5">
+                        <p>숙소이름</p>
+                        <p>리뷰</p><br>
+                        <p>침대 유형</p>
+                    </div>
+                    <div class="float-end" style="padding-top: 200px; margin-right: 100px;">
+                        <p>가격</p>
+                        <button class="border border-0" type="button" id="hotel">예약하기</button>
+                    </div>
+                </div>
+            </div>
+            <div class="row border border-2 mb-4" style="height: 36vh;">
+                <div class="col-3 border border-2">
+                    <a href="#"><img class="img-fluid" src="" alt="이미지"></a>
+                </div>
+                <div class="col-8" style="text-align: center;">
+                    <div class="float-start m-5">
+                        <p>숙소이름</p>
+                        <p>리뷰</p><br>
+                        <p>침대 유형</p>
+                    </div>
+                    <div class="float-end" style="padding-top: 200px; margin-right: 100px;">
+                        <p>가격</p>
+                        <button class="border border-0" type="button">예약하기</button>
+                    </div>
+                </div>
+            </div>
+            <div class="row border border-2 mb-4" style="height: 36vh;">
+                <div class="col-3 border border-2">
+                    <a href="#"><img class="img-fluid" src="" alt="이미지"></a>
+                </div>
+                <div class="col-8" style="text-align: center;">
+                    <div class="float-start m-5">
+                        <p>숙소이름</p>
+                        <p>리뷰</p><br>
+                        <p>침대 유형</p>
+                    </div>
+                    <div class="float-end" style="padding-top: 200px; margin-right: 100px;">
+                        <p>가격</p>
+                        <button class="border border-0" type="button">예약하기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 모달 기능 -->
+        <div class="modal fade bg-white" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-fullscreen-down">
+                <div class="modal-header">
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <img src="./source/out_link/common.jpeg" alt="" style="width: 400px;" class="p-1">
+                  <img src="./source/out_link/common-2.jpeg" alt="" style="width: 200px;" class="p-2">
+                  <img src="./source/out_link/common-3.jpeg" alt="" style="width: 200px;" class="p-2">
+                </div>
+              </div>
+            </div>
+        </div>
+        <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">modal 예시</button>
+        
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./source/out_link/tripdata.js"></script>
+    <script>
+        // 숙박 검색화면
+        const logoMain = document.querySelector("#logoMain");
+        logoMain.addEventListener("click", function() {
+            window.open("1_main.html", "_self");
+        });
+        const login = document.querySelector("#login");
+        login.addEventListener("click", function() {
+            window.open("2_login.html","_self");
+        });
+        const wishlist = document.querySelector("#wishlist");
+        wishlist.addEventListener("click", function() {
+            window.open("5_wishlist.html","_self");
+        });
+        const mytrip = document.querySelector("#mytrip");
+        mytrip.addEventListener("click", function() {
+            window.open("6-1_ActivityTransFood_reservation.html","_self");
+        });
+        const hotel = document.querySelector("#hotel");
+        hotel.addEventListener("click", function() {
+            window.open("14-3_productHotel.html","_self");
+        })
+
+        // json 데이터 가져오기
+        let items = v_data.results[0].items;
+
+        // 검색창에 입력받은거 받기
+        let searchKeyword = document.querySelector("#searchKeyword");
+
+        // 검색 버튼 받기
+        let searchBtn = document.querySelector("#searchBtn");
+
+        // 검색 결과 나오는칸 받기
+        const lodgmentSet = document.querySelector("#lodgmentSet");
+        
+        // 검색 버튼 이벤트
+        searchBtn.addEventListener("click", function(){
+            // TODO 세부지역 검색 구현 필요
+            // TODO 이미지 크기 조정 필요
+            
+            searchingItems = items
+                                .filter(item => item.kor_hashtags.includes("#숙박"))
+                                .filter(item => (item.kor_miniaddr)?item.kor_miniaddr.substring(0,3).includes(searchKeyword.value):false);
+            // console.dir(items[0]);
+            console.log(searchingItems);
+            // kor_hashtags안에 숙박에서
+            // kor_address안에 검색어가 있으면
+            // 원래 있던것들 비워주고
+            lodgmentSet.innerHTML = "";
+            // 새로 틀을 생성을 해줌
+            const lodgmentData = document.createElement('div');
+            lodgmentData.classList.add('row', 'border', 'border-2', 'mb-4');
+            lodgmentData.style.height = '36vh';
+            searchingItems.forEach(item => {
+                const lodgmentData = document.createElement('div');
+                lodgmentData.classList.add('lodgment-row');
+
+                const leftColumn = document.createElement('div');
+                leftColumn.classList.add('lodgment-image');
+                // TODO 모달 기능 필요
+                const leftContent = `
+                    <div class="modal fade bg-white" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+                        <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-fullscreen-down">
+                            <div class="modal-header">
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                            <img src="${item.kor_imglink}" alt="" style="width: 400px;" class="p-1">
+                            <img src="./source/out_link/common.jpeg" alt="" style="width: 200px;" class="p-2">
+                            <img src="./source/out_link/common-2.jpeg" alt="" style="width: 200px;" class="p-2">
+                            <img src="./source/out_link/common-3.jpeg" alt="" style="width: 200px;" class="p-2">
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    <button data-bs-target="#exampleModalToggle" data-bs-toggle="modal"><img src="${item.kor_imglink}" alt="${item.kor_title}"></button>
+                `;
+                leftColumn.innerHTML = leftContent;
+
+                const rightColumn = document.createElement('div');
+                rightColumn.classList.add('lodgment-info');
+                const rightContent = `
+                    <p>${item.kor_title}</p>
+                    <p>리뷰</p>
+                    <p>침대 유형</p>
+                    <p class="lodgment-price">가격</p>
+                    <button class="border border-0" type="button">예약하기</button>
+                `;
+                rightColumn.innerHTML = rightContent;
+
+                lodgmentData.appendChild(leftColumn);
+                lodgmentData.appendChild(rightColumn);
+
+                lodgmentSet.appendChild(lodgmentData);
+            });
+        })
+
+
+    </script>
+</body>
+</html>

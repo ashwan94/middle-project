@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="./source/out_link/design.css">
+    <link rel="stylesheet" href="./source/out_link/design.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary m-3">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"><img class="logo" src="./source/img/TRaM_logo.png" style="width: 50px;"
+                    alt="이미지" id="logoMain"></a>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <input type="text" placeholder="검색키워드" id="keyword">
+                    </li>
+                    <li class="nav-item">
+                        <input type="date" id="departDate">
+                        <input type="date" id="arriveDate">
+                    </li>
+                    <button type="button" class="btn btn-outline-primary">검색</button>
+                </ul>
+                <form class="d-flex" role="search">
+                    <button class="btn mx-1" style="font-weight:700; font-size:15px;" type="button" style="width: 2vw;"
+                        id="wishlist">찜</button>
+                    <button class="btn mx-1" style="font-weight:700; font-size:15px;" type="button" style="width: 5vw;"
+                        id="mytrip">마이트립</button>
+                    <button class="btn mx-1" style="font-weight:700; font-size:15px;" type="button" style="width: 5vw;"
+                        id="login">로그인</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-2 h-100 border rounded">
+                <h4 class="m-3">마이트립</h4>
+                <div class="pt-2 text-center">
+                    <div>
+                        <a href="">예정된 여행</a>
+                    </div>
+                    <div>
+                        <a href="">지난 여행</a>
+                    </div>
+                    <!-- <div>
+                        <a href="">취소된 여행</a>
+                    </div> -->
+
+                    <!-- <h4 class="mt-5">숙소</h4>
+                    <div>
+                        <a href="6-2_Accommodation_reservation.html">숙소 예약</a>
+                    </div> -->
+                </div>
+                <h4 class="m-3 mt-5">내 정보</h4>
+                <div class="text-center mb-3">
+                    <a href="8_myPage.html">정보 조회</a>
+                </div>
+            </div>
+            <div class="col ps-5">
+                <div class="col">
+                    <div class="w-100">
+                    </div>
+                    <div id="content">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- footer 회사 정보 등 -->
+    <footer style="background-color: rgb(250,250,250);" class="foot p-5">
+        <div class="row ms-3">
+            <div class="col-1"></div>
+            <div class="col-5">
+                <div class="mb-1" style="font-size:18px; font-weight: bolder;">고객센터</div>
+                <div style="font-size:14px; font-weight: 200;">오전 9시 ~ 새벽 3시 운영</div>
+                <!-- // TODO 전화번호 옆에 전화기 아이콘 삽입하기. Font Awesome 에서 찾아보라고 함 -->
+                <div class="btn btn-outline-secondary mt-3"><i class="bi bi-phone"></i>1677-6290</div>
+                <div class="btn btn-outline-secondary mt-3 ms-3">카톡 문의</div>
+            </div>
+            <div class="col-1">
+                <div style="font-size:18px; font-weight: bolder;">회사</div>
+                <div class="mt-1">
+                    <a href="https://www.nextit.or.kr/origin.html"
+                        style="font-size:14px; font-weight: 200; color:grey;">회사 소개</a>
+                </div>
+            </div>
+            <div class="col-1">
+                <div style="font-size:18px; font-weight: bolder;">서비스</div>
+                <div class="mt-1">
+                    <a href="https://www.nextit.or.kr/origin.html"
+                        style="font-size:14px; font-weight: 200; color:grey;">공지사항</a>
+                </div>
+                <div class="mt-1">
+                    <a href="https://www.nextit.or.kr/origin.html"
+                        style="font-size:14px; font-weight: 200; color:grey;">FAQ</a>
+                </div>
+            </div>
+            <div class="col-1">
+                <div style="font-size:18px; font-weight: bolder;">혜택</div>
+                <a href="https://www.nextit.or.kr/origin.html"
+                    style="font-size:14px; font-weight: 200; color:grey;">마일리지 사용</a>
+                <div class="mt-1">
+                    <a href="https://www.nextit.or.kr/origin.html"
+                        style="font-size:14px; font-weight: 200; color:grey;">VIP 라운지</a>
+                </div>
+                <div class="mt-1">
+                    <a href="https://www.nextit.or.kr/origin.html"
+                        style="font-size:14px; font-weight: 200; color:grey;">쿠폰 사용 안내</a>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-1"></div>
+            <div class="col ms-4 mt-4" style="font-size:11px;">
+                <span>
+                    (주)트램<br>
+                    주소 : 대전 중구 계룡로 825 희영빌딩 2층 넥스트아이티교육센터 현관비밀번호:0909 | 대표이사 : 안승환 | 사업자등록번호 : 713-26-00858
+                    <a href="https://bizno.net/article/7132600858">사업자정보확인</a><br>
+                    전자우편주소 : letmeknow@tram.co.kr | 통신판매번호 : 2021-중국심천-0019 | 관광사업자 등록번호 : 제1025-24호 | 전화번호 : 1677-6290
+                    | 호스팅서비스제공자에 상호 표시 : (주)트램<br>
+                    (주)트램은 통신중개판매자로서 통신판매의 당사자가 아니며, 상품의 예약, 이용 및 환불 등과 관련된 의무와 책임은 각 판매자에게 있으므로 저희에게 제발 연락하지 말아주세요.
+                </span>
+            </div>
+        </div>
+        <div class="row mt-3 ms-3">
+            <div class="col-1"></div>
+            <span class="col-1" style="font-size:11px;">
+                <a href="#">이용 약관</a>
+            </span>
+            <span class="col-1" style="font-size:11px;">
+                <a href="#">개인정보처리방침</a>
+            </span>
+            <span class="col-1 ms-3" style="font-size:11px;">
+                <a href="#">소비자 분쟁해결 기준</a>
+            </span>
+            <span class="col-2 ms-4" style="font-size:11px;">
+                <a href="#">콘텐츠산업진흥법에 의한 표시</a>
+            </span>
+        </div>
+        <div class="row mt-5 ms-3">
+            <div class="col-1"></div>
+            <div class="col-3" style="font-size: 11px;">Copyright TRaM Company Corp. All rights reserved.<br>Therefore
+                if you try to copy ours, we never negociate.</div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+    <script src="./source/out_link/Util.js"></script>
+    <script>
+        // --------------- 6_예약 화면 기능 구현 ---------------
+        let loginUser = getLoginAccount();
+        // 로그인된 사용자 계정 정보 가져옴
+
+        // 결제완료된 상품 정보 가져옴
+        let productData = JSON.parse(localStorage.getItem("ReserveHistory"));
+        console.log(`결제 완료된 상품 리스트\n${productData}`);
+
+        const login = document.querySelector("#login");
+        LoginAndOut(login);
+
+        OnLogin();
+
+        window.addEventListener("DOMContentLoaded", function () {
+            // 선택된 상품의 모든 정보 가져옴
+
+            // TODO
+            // 구매 상품이 아니기 때문에 추후 변경해야됨
+
+            // TODO
+            // System 상 오늘 날짜를 기준으로 기간이 지나면
+            // 자동으로 '지난 여행' 카테고리 종속되도록 하기
+
+            // TODO
+            // 예정된 여행 클릭 시 '마이트립' page 에서 오늘날짜 기준으로
+            // 미래에 있는 구매 내역을 보여주기
+
+            // TODO
+            // 지난 여행 클릭 시 '마이트립' page 에서 오늘날짜 기준으로
+            // 과거에 있는 구매 내역을 보여주기
+
+            // TODO
+            // 현재는? => '마이트립' 은 통합 예약내역 조회하는 기능이므로
+            // 현재 예약 내역은 마이트립에서만 조회할 수 있도록 조치하기
+
+            // method 하나 만들어서 1,2,3 return 받은 값으로
+            // 과거, 현재, 미래 구분하기
+
+            // 결제된 모든 정보 조회
+            const contentEl = document.querySelector("#content");
+            for (let i = 0; i < productData.length; i++) {
+                contentEl.innerHTML += `<div class="row card p-4 mb-3">
+                                            <div class="col-12">
+                                                <div><h3 style="font-weight:bolder;">${productData[i].name}</h3>${productData[i].miniaddr}</div>
+                                                    <img src="${productData[i].img}" class="my-3" style="width:300px;">
+                                                    <div class="row">
+                                                        <div class="col-3" style="font-size:17px; font-weight:bolder">체크인</div>
+                                                            <div class="col-3" style="font-size:17px; font-weight:bolder">체크아웃</div>
+                                                                <div class="row mb-3">
+                                                                    <div class="col-3">${productData[i].date[0]}</div>
+                                                                    <div class="col-3 ms-2">${productData[i].date[1]}</div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-3" style="font-size:17px; font-weight:bolder">옵션</div>
+                                                                    <div class="col-3 ms-2" style="font-size:17px; font-weight:bolder">연락처</div>
+                                                                        <div class="row mb-3">
+                                                                            <div class="col-6">${productData[i].tel}</div>
+                                                                        <div class="col-3 ms-3">${productData[i].addr}</div>
+                                                                        </div>
+                                                                <p style="font-size:17px; font-weight:bolder">${productData[i].price}원</p>
+                                                            <div class="text-center">
+                                                                <button class="btn btn-outline-primary col-2" type="button">문의하기</button>
+                                                                <button class="btn btn-outline-primary col-2 ms-3" type="button">리뷰 작성</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>`;
+            }
+        })
+
+        // 교통, 숙박, 액티비티 예약내역 화면
+        const logoMain = document.querySelector("#logoMain");
+        logoMain.addEventListener("click", function () {
+            window.open("1_main.html", "_self");
+        });
+
+
+        const wishlist = document.querySelector("#wishlist");
+        wishlist.addEventListener("click", function () {
+            window.open("5_wishlist.html", "_self");
+        });
+        const mytrip = document.querySelector("#mytrip");
+        mytrip.addEventListener("click", function () {
+            window.open("6-1_ActivityTransFood_reservation.html", "_self");
+        });
+
+        // 로그인 여부에 따라 우측 상단 로그인 버튼 문구 교체
+        function OnLogin() {
+            if (loginUser == null) {
+                login.textContent = "로그인";
+            } else {
+                login.textContent = "로그아웃";
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>

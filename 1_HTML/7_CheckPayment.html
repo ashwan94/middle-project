@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>productHotel</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <style>
+        li {
+            list-style: none;
+            margin-top: 15px;
+        }
+
+        .logo {
+            height: 5vh;
+        }
+
+        #productName {
+            margin-left: -25px;
+            padding: 0 auto;
+        }
+
+        .foot {
+            color: rgba(0, 0, 0, 0.5);
+        }
+
+        a {
+            text-decoration: none;
+            color: rgb(100, 100, 100);
+            font-weight: 700;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- navigation bar -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid mb-3">
+            <a class="navbar-brand" href="#"><img class="logo" src="./source/img/TRaM_logo.png"
+                    style="width: 50px; height:50px;" alt="이미지" id="logoMain"></a>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item me-3">
+                        <input type="text" placeholder="검색" style="height:40px; width:250px;" id="keyword">
+                    </li>
+                    <li class="nav-item">
+                        <input type="date" id="departDate" class="me-1" style="height:40px; width:120px;">
+                        <input type="date" id="arriveDate" class="me-2" style="height:40px; width:120px;">
+                    </li>
+                    <button type="button" class="btn btn-outline-primary"
+                        style="margin-top:15px; width:50px; height:40px; font-size:12px; font-weight: 700;">검색</button>
+                </ul>
+                <form class="d-flex mt-3" role="search">
+                    <button class="btn mx-1" style="font-weight:700; font-size:15px;" type="button" style="width: 2vw;"
+                        id="wishlist">찜</button>
+                    <button class="btn mx-1" style="font-weight:700; font-size:15px;" type="button" style="width: 5vw;"
+                        id="mytrip">마이트립</button>
+                    <button class="btn mx-1" style="font-weight:700; font-size:15px;" type="button" style="width: 5vw;"
+                        id="login">로그인</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+
+
+
+    <div class="row mt-3">
+        <!-- 좌측 여백 -->
+        <div class="col-1 ms-5"></div>
+
+        <div class="col-6 m-3">
+            <div class="ms-3 mt-3" style="font-size:23px; font-weight: 500;">예약 확인 및 결제</div>
+            <div class="ms-3 mt-3" style="font-size:17px; font-weight: 500;">예약자 정보</div>
+            <div class="row ms-1 mt-3">
+                <div class="col-4" style="font-weight: 200;">이름</div>
+                <div class="col-4" style="font-weight: 200;">연락처</div>
+                <div class="row">
+                    <div class="col-4">
+                        <input type="text" class="form-control" style="width:200px;" id="userName" disabled>
+                    </div>
+                    <div class="col-4">
+                        <input type="text" class="form-control" style="width:200px;" id="userPhone" disabled>
+                    </div>
+                </div>
+                <div class="mt-1" style="font-weight: 100; font-size: 10px;">회원정보는 마이페이지에서 변경 가능합니다.</div>
+            </div>
+            <div class="row ms-1 mt-3">
+                <div class="col-2" style="font-weight: 200;">이메일</div>
+                <div class="row">
+                    <div class="col-2">
+                        <input type="text" class="form-control" style="width:510px;" id="userID" disabled>
+                    </div>
+                </div>
+            </div>
+            <hr class="text-center mt-5" style="width:900px;">
+            <div class="mb-4 ">
+                <div class="ms-3 mt-3" style="font-size:17px; font-weight: 500;">결제 수단</div>
+                <div class="row ms-3 my-3">
+                    <!-- // TODO 은행사 로고 넣기 -->
+                    <div class="btn btn-outline-secondary col-3 m-1" style="width:120px; color:black"><img src="">네이버페이
+                    </div>
+                    <div class="btn btn-outline-secondary col-3 m-1" style="width:120px; color:black"><img src="">카카오페이
+                    </div>
+                    <div class="btn btn-outline-secondary col-3 m-1" style="width:120px; color:black"><img src="">하나페이
+                    </div>
+                    <div class="btn btn-outline-secondary col-2 m-1" style="width:120px; color:black"><img src="">토스페이
+                    </div>
+                    <div class="btn btn-outline-secondary col-4 m-1" style="width:130px; color:black"><img
+                            src="">신용/체크카드</div>
+                </div>
+                <div class="row ms-3">
+                    <div class="btn btn-outline-secondary col-3 m-1" style="width:120px; color:black"><img src="">간편계좌이체
+                    </div>
+                    <div class="btn btn-outline-secondary col-3 m-1" style="width:120px; color:black"><img src="">PAYCO
+                    </div>
+                    <div class="btn btn-outline-secondary col-3 m-1" style="width:120px; color:black"><img src="">휴대폰 결제
+                    </div>
+                    <div class="btn btn-outline-secondary col-3 m-1" style="width:120px; color:black"><img src="">법인 결제
+                    </div>
+                    <div class="btn btn-outline-secondary col-3 m-1" style="width:130px; color:black" id="account"><img
+                            src="">무통장입금
+                    </div>
+                </div>
+            </div>
+            <!-- 취소 정책 -->
+            <div class="mt-5" style="width:1058px;">
+                <div class="ms-3 mb-2" style="font-size:17px; font-weight: 500;">취소 정책</div>
+                <div><input type="text" class="form-control ms-2" style="width:900px; height:80px;" disabled
+                        value="해당 상품은 예약 취소 및 변경이 불가능해요.예약한 호텔이나 숙소에 체크인하지 않을 경우 노쇼(No-Show)로 간주되며, 예약 요금의 100%가 취소 요금으로 부과됩니다(호텔 정책에 따름)">
+                </div>
+                <!-- // TODO 줄이 기니까 개행 문자 삽입 -->
+                <hr style="width:900px;">
+                <div class="ms-3 mb-2" style="font-size:17px; font-weight: 500;">특별 요청 사항</div>
+                <div><input type="text" class="form-control ms-2" style="width:900px;" disabled
+                        value="요청 사항은 체크인 당일의 호텔 사정과 선택한 객실의 조건에 따라 적용이 어려울 수 있어요."></div>
+                <div class="mt-3 row">
+                    <div class="ms-3 mb-2" style="font-size:15px; font-weight: 500;">선호하는 침대 구성</div>
+                    <div class="col-4 ms-3">
+                        <input type="checkbox"> 침대 1개
+                    </div>
+                    <div class="col-4">
+                        <input type="checkbox" class="ms-2"> 침대 2개
+                    </div>
+                </div>
+                <div class="mt-3 row">
+                    <div class="ms-3 mb-2" style="font-size:15px; font-weight: 500;">선호하는 객실</div>
+                    <div class="col-4 ms-3">
+                        <input type="checkbox"> 금연 객실
+                    </div>
+                    <div class="col-4">
+                        <input type="checkbox" class="ms-2"> 흡연 객실
+                    </div>
+                </div>
+                <div class="mt-3 row">
+                    <div class="ms-3 mb-2" style="font-size:15px; font-weight: 500;">기타 요청 사항</div>
+                    <div class="col-4 ms-3">
+                        <input type="checkbox"> 고층
+                    </div>
+                    <div class="col-4">
+                        <input type="checkbox" class="ms-2"> 늦은 체크인
+                    </div>
+                </div>
+                <div class="ms-3 pt-3" style="font-size:17px; font-weight: 500;">숙소 안내 사항</div>
+                <div><input type="text" class="form-control ms-2 mb-5" style="width:900px;" disabled
+                        value="// TODO 다른 호텔 숙소 안내 사항 찾아서 채워넣기">
+                </div>
+            </div>
+        </div>
+        <!-- 우측 결제 상품 정보 -->
+        <div class="col-2 ms-5 mt-3 card" style="height:750px;">
+            <h5 class="ms-3 mt-3 mb-2" style="font-weight: 600;" id="hotelTitle"></h5>
+            <div class="ms-3 mb-4" id="local" style="font-size: 15px; color:rgb(100,100,100);"></div>
+            <div id="showImg" class="ms-2 text-center">
+                </h5>
+            </div>
+            <div class="row">
+                <div class="col-4 ms-3 mt-4" style="font-weight: 700; color:rgb(200,200,200);">객실</div>
+                <div class="col-6 mt-4 text-center" id="room"></div>
+            </div>
+            <div class="row">
+                <div class="col-4 ms-3 mt-4" style="font-weight: 700; color:rgb(200,200,200);">일정</div>
+                <div class="col-6 mt-4 text-center" id="date"></div>
+            </div>
+            <div class="row">
+                <div class="col-4 ms-3 mt-4" style="font-weight: 700; color:rgb(200,200,200);">인원</div>
+                <div class="col-6 mt-4 text-center" id="number"></div>
+            </div>
+            <div class="row">
+                <div class="col-3"></div>
+                <div class="col-8 mt-1 ms-3" style="font-size: 11px; color:red;">예약 인원과 실제 인원이 다를 경우 법적 처벌을 받을 수 있으니 신중히
+                    고민하고 결정하시길 권장드립니다.</div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-4 ms-3 mt-4" style="font-weight: 700; color:rgb(200,200,200);">옵션</div>
+                <div class="col-6 mt-4 text-center">무료 WiFi</div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col">
+                    <!-- 우측 상품 총 금액, 결제/취소 버튼 -->
+                    <div>
+                        <div id="totalPrice" class="text-center mt-2 mb-3 text-primary"
+                            style="font-size:25px; font-weight:500;">
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <div class="py-1 m-2">
+                            <button class="w-75 btn btn-outline-primary" id="pay">결제하기</button>
+                        </div>
+                        <div class="py-1 m-2">
+                            <button class="w-75 btn btn-outline-primary" id="cancel">취소</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- footer 회사 정보 등 -->
+    <footer style="background-color: rgb(250,250,250);" class="foot p-5">
+        <div class="row ms-3">
+            <div class="col-1"></div>
+            <div class="col-5">
+                <div class="mb-1" style="font-size:18px; font-weight: bolder;">고객센터</div>
+                <div style="font-size:14px; font-weight: 200;">오전 9시 ~ 새벽 3시 운영</div>
+                <!-- // TODO 전화번호 옆에 전화기 아이콘 삽입하기. Font Awesome 에서 찾아보라고 함 -->
+                <div class="btn btn-outline-secondary mt-3"><i class="bi bi-phone"></i>1677-6290</div>
+                <div class="btn btn-outline-secondary mt-3 ms-3">카톡 문의</div>
+            </div>
+            <div class="col-1">
+                <div style="font-size:18px; font-weight: bolder;">회사</div>
+                <div class="mt-1">
+                    <a href="https://www.nextit.or.kr/origin.html"
+                        style="font-size:14px; font-weight: 200; color:grey;">회사 소개</a>
+                </div>
+            </div>
+            <div class="col-1">
+                <div style="font-size:18px; font-weight: bolder;">서비스</div>
+                <div class="mt-1">
+                    <a href="https://www.nextit.or.kr/origin.html"
+                        style="font-size:14px; font-weight: 200; color:grey;">공지사항</a>
+                </div>
+                <div class="mt-1">
+                    <a href="https://www.nextit.or.kr/origin.html"
+                        style="font-size:14px; font-weight: 200; color:grey;">FAQ</a>
+                </div>
+            </div>
+            <div class="col-1">
+                <div style="font-size:18px; font-weight: bolder;">혜택</div>
+                <a href="https://www.nextit.or.kr/origin.html"
+                    style="font-size:14px; font-weight: 200; color:grey;">마일리지 사용</a>
+                <div class="mt-1">
+                    <a href="https://www.nextit.or.kr/origin.html"
+                        style="font-size:14px; font-weight: 200; color:grey;">VIP 라운지</a>
+                </div>
+                <div class="mt-1">
+                    <a href="https://www.nextit.or.kr/origin.html"
+                        style="font-size:14px; font-weight: 200; color:grey;">쿠폰 사용 안내</a>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-1"></div>
+            <div class="col ms-4 mt-4" style="font-size:11px;">
+                <span>
+                    (주)트램<br>
+                    주소 : 대전 중구 계룡로 825 희영빌딩 2층 넥스트아이티교육센터 현관비밀번호:0909 | 대표이사 : 안승환 | 사업자등록번호 : 713-26-00858
+                    <a href="https://bizno.net/article/7132600858">사업자정보확인</a><br>
+                    전자우편주소 : letmeknow@tram.co.kr | 통신판매번호 : 2021-중국심천-0019 | 관광사업자 등록번호 : 제1025-24호 | 전화번호 : 1677-6290
+                    | 호스팅서비스제공자에 상호 표시 : (주)트램<br>
+                    (주)트램은 통신중개판매자로서 통신판매의 당사자가 아니며, 상품의 예약, 이용 및 환불 등과 관련된 의무와 책임은 각 판매자에게 있으므로 저희에게 제발 연락하지 말아주세요.
+                </span>
+            </div>
+        </div>
+        <div class="row mt-3 ms-3">
+            <div class="col-1"></div>
+            <span class="col-1" style="font-size:11px;">
+                <a href="#">이용 약관</a>
+            </span>
+            <span class="col-1" style="font-size:11px;">
+                <a href="#">개인정보처리방침</a>
+            </span>
+            <span class="col-1 ms-3" style="font-size:11px;">
+                <a href="#">소비자 분쟁해결 기준</a>
+            </span>
+            <span class="col-2 ms-4" style="font-size:11px;">
+                <a href="#">콘텐츠산업진흥법에 의한 표시</a>
+            </span>
+        </div>
+        <div class="row mt-5 ms-3">
+            <div class="col-1"></div>
+            <div class="col-3" style="font-size: 11px;">Copyright TRaM Company Corp. All rights reserved.<br>Therefore
+                if you try to copy ours, we never negociate.</div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./source/out_link/Util.js"></script>
+    <script src="./source/out_link/dummyData.js"></script>
+    <script>
+        // TODO
+        // 이용 안내, 취소 규정 등 내용 채우기
+        // 여기어때에서 긁어오기
+
+        let loginUser = getLoginAccount();
+        let dummy = product_dummy;
+        let productData = JSON.parse(localStorage.getItem("ReserveTemp"));
+        // 사용자가 선택한 상품 정보 Array 에 담겨있음
+        // 0 : 숙소명
+        // 1 : 가격
+        // 2 : 주소
+        // 3 : 지역
+        // 4 : 연락처
+        // 5 : 이미지
+        // 6 : 객실 유형
+        // 7 : 인원 수(옵션 선택 개수)
+        // 8 : 예약 날짜(출발, 도착)
+
+        let navData = JSON.parse(localStorage.getItem("navInfo"));
+        let nav = document.querySelector("#keyword");
+        let arrive = document.querySelector("#arriveDate");
+        let depart = document.querySelector("#departDate");
+
+        depart.value = navData[0];
+        arrive.value = navData[1];
+        nav.value = navData[2];
+
+        const title = document.querySelector("#hotelTitle");
+        title.innerText = `${productData[0]}`
+
+        const login = document.querySelector("#login");
+        LoginAndOut(login);
+
+        // 유저 이름
+        let userName = document.querySelector("#userName");
+        userName.value = loginUser.User_nickName;
+
+        // 유저 연락처
+        let userPhone = document.querySelector("#userPhone");
+        userPhone.value = loginUser.User_phone;
+
+        // 유저 이메일
+        let userID = document.querySelector("#userID");
+        userID.value = loginUser.User_id;
+
+        // 객실
+        let room = document.querySelector("#room");
+        room.innerText = `${productData.option}`
+
+        // 상품 일정
+        let date = document.querySelector("#date");
+        date.innerText = `${productData.date[0]} 부터\n${productData.date[1]} 까지`
+
+        // 인원
+        let number = document.querySelector("#number");
+        number.innerText = `${productData.number} 명`
+
+        // 가격
+        let totalPrice = document.querySelector("#totalPrice");
+        totalPrice.innerText = `${productData.price}원`;
+
+        // 무통장입금 창 띄우기
+        let account = document.querySelector("#account");
+        account.addEventListener("click", function () {
+            let data = "";
+            for (let i = 0; i < dummy.accounts.length; i++) {
+                data += `${dummy.accounts[i]}\n`;
+            }
+            alert(`${data}`);
+        })
+
+
+        // TODO 리뷰 내용 채우기
+        let review = document.querySelector("#review");
+        // review.innerHTML = `${}`
+
+        // 상품 이미지 띄우기
+        const imgEl = document.querySelector("#showImg");
+        imgEl.innerHTML = `<div><img src="${productData.img}" class="rounded" style="width:250px;"></div>`;
+
+        const logoMain = document.querySelector("#logoMain");
+        logoMain.addEventListener("click", function () {
+            window.open("1_main.html", "_self");
+        });
+
+        const wishlist = document.querySelector("#wishlist");
+        wishlist.addEventListener("click", function () {
+            window.open("5_wishlist.html", "_self");
+        });
+        const mytrip = document.querySelector("#mytrip");
+        mytrip.addEventListener("click", function () {
+            window.open("6-1_ActivityTransFood_reservation.html", "_self");
+        });
+
+
+        console.log(productData);
+
+        // TODO 상품 페이지의 찜 버튼이 활성화된 상태면
+        // 새로고침하더라도 찜된 상태 유지하기(로그인 유지 기능과 흡사)
+        const pay = document.querySelector("#pay");
+        pay.addEventListener("click", function () {
+            let conf = window.confirm("결제하시겠습니까?");
+            if (conf) {
+                let reserveTemp = JSON.parse(localStorage.getItem("ReserveTemp"));
+                let reserveHistory = JSON.parse(localStorage.getItem("ReserveHistory"));
+
+                if (reserveHistory == null) {
+                    // 최초 1번은 조건없이 값을 넣기
+                    // 딱 1번만 object 를 [ ] 로 감싸기!!!!!!!
+                    let arr = [reserveTemp]; 
+                    localStorage.setItem("ReserveHistory", JSON.stringify(arr));
+                } else {
+                    reserveHistory.push(reserveTemp);
+                    localStorage.setItem("ReserveHistory", JSON.stringify(reserveHistory));
+                }
+
+                // alert(`임시\n${reserveTemp}`);
+                // alert(`저장된 것\n${reserveHistory}`);
+                alert(`최종\n${JSON.parse(localStorage.getItem("ReserveHistory"))}`);
+
+                localStorage.removeItem("navInfo");
+                localStorage.removeItem("ProductInfo");
+                localStorage.removeItem("ReserveTemp");
+                localStorage.removeItem("checked");
+                localStorage.removeItem("productOption");
+                alert("결제가 완료되었습니다.");
+                window.open("6-1_ActivityTransFood_reservation.html", "_self");
+            }
+        })
+
+
+        // 취소 버튼
+        const cancel = document.querySelector("#cancel");
+        cancel.addEventListener("click", function () {
+            let conf = window.confirm("결제를 취소하시겠습니까?");
+            if (conf) {
+                localStorage.removeItem("ReserveTemp");
+                window.history.back();
+            }
+        })
+
+        OnLogin();
+
+
+        // 로그인 여부에 따라 우측 상단 로그인 버튼 문구 교체
+        function OnLogin() {
+            if (loginUser == null) {
+                login.textContent = "로그인";
+            } else {
+                login.textContent = "로그아웃";
+            }
+        }
+
+
+
+    </script>
+</body>
+
+</html>

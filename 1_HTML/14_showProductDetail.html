@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>productHotel</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./source/out_link/design.css">
+    <style>
+        li {
+            list-style: none;
+            margin-top: 15px;
+        }
+
+        .logo {
+            height: 5vh;
+        }
+
+        #localName {
+            margin-left: -25px;
+            padding: 0 auto;
+        }
+
+        #productName {
+            margin-left: -25px;
+            padding: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- navigation bar -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary m-3">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"><img class="logo" src="./source/img/TRaM_logo.png" style="width: 50px;"
+                    alt="이미지" id="logoMain"></a>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <input type="text" placeholder="검색" id="keyword">
+                    </li>
+                    <li class="nav-item">
+                        <input type="date" id="departDate">
+                        <input type="date" id="arriveDate">
+                    </li>
+                    <li class="nav-item dropdown ">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            인원
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                    <button type="button" class="btn btn-outline-primary">검색</button>
+                    <li class="nav-item mt-1" style="margin-left: 320px;">
+                        <a class="nav-link" href="#">실시간 인기 검색어</a>
+                    </li>
+                </ul>
+                <form class="d-flex" role="search">
+                    <button class="btn mx-1" style="font-weight:700; font-size:15px;" type="button" style="width: 2vw;"
+                        id="wishlist">찜</button>
+                    <button class="btn mx-1" style="font-weight:700; font-size:15px;" type="button" style="width: 5vw;"
+                        id="mytrip">마이트립</button>
+                    <button class="btn mx-1" style="font-weight:700; font-size:15px;" type="button" style="width: 5vw;"
+                        id="login">로그인</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+
+
+
+
+
+    <!-- 선택 상품의 img 표현 -->
+    <div class="row m-2" id="showImg">
+        <div class="col-1 ms-2"></div>
+    </div>
+    <!-- 상품 내용 -->
+    <div class="row">
+
+        <!-- 좌측 여백 -->
+        <div class="col-1 ms-5"></div>
+
+        <!-- 상품 옵션, 이용 방법 등 -->
+        <div class="col-6 card p-4">
+            <ul>
+                <label id="localName"></label>
+                <div id="productName"></div>
+            </ul>
+            <!-- 사용자 리뷰 -->
+            <div class="card my-2 p-5" id="review">
+                사용자 리뷰 들어갈 공간
+            </div>
+            <hr>
+            <ul class="border rounded" style="background-color: rgba(200,220,240, 0.3)">
+                <h4 class="mt-4">객실 선택</h4>
+                <div id="productOption" class="mt-3">
+                </div>
+                <ol>
+                    <div class="row">
+                        <div class="col-3" id="proudctPrice">
+                        </div>
+                    </div>
+                </ol>
+            </ul>
+            <div>
+                <ul class="border rounded" style="background-color: rgba(200,220,240, 0.3)">
+                    <h4 class="mt-3">이용 안내</h4>
+                    <div class="mb-3">체크인/체크아웃<br>
+                        - 체크인 : 15:00 부터<br>
+                        - 체크아웃 : 12:00 까지<br><br>
+
+                        알아두실 사항<br>
+                        [예약안내]<br>
+                        ㅁ 예약 전 객실 별 기준 인원/최대 인원을 확인해주세요. 기준 인원 외 투숙 인원 추가 시 추가요금이 발생할 수 있습니다.<br>
+                        ㅁ 예약시 반드시 투숙자명을 실명으로 기재해주세요.<br>
+                        ㅁ 날짜 변경이 불가하니 예약 전 투숙 날짜를 한번 더 확인 부탁드립니다.<br>
+                        ㅁ 숙소 이용 안내 내용은 업체 사정상 변경될 수 있습니다.<br>
+                        • 아동(청소년) 무료 투숙이 가능한 경우 인원 추가 비용 없이 객실 내 기존 침대 이용 시 무료 투숙이 가능합니다. <br>간이침대 추가 필요시 추가 요금이
+                        부과됩니다.<br>
+                        • 유/아동 및 청소년 투숙 가능 여부 및 비용은 객실별로 상이합니다. 투숙할 인원을 선택 후 객실 정책을 확인하세요.<br>
+                        • 객실별로 세부 정책은 달라질 수 있습니다. 예약 전 객실 별 예약 정책을 반드시 확인해주세요.<br>
+                        • 특별 요청 사항은 체크인 시 이용 상황에 따라 제공 여부가 달라질 수 있으며 추가 요금이 부과 될 수 있습니다. <br>또한, 반드시 보장되지는 않습니다.</div>
+                </ul>
+            </div>
+        </div>
+        <div class="col-4 ms-2">
+            <div id="map" class="ms-2 card w-50 p-4 align-items-center" style="height:300px;">
+            </div>
+            <div class="card mt-3 w-50 ms-2">
+                <div id="totalPrice" class="text-center mt-4 mb-3 text-primary"
+                    style="font-size:25px; font-weight:500;">
+                    0 원
+                </div>
+                <div class="text-center">
+                    <div class="py-1 m-2">
+                        <button class="w-75 btn btn-outline-primary" id="buyTicket">예약하기</button>
+                    </div>
+                    <div class="py-1 m-2">
+                        <button class="w-75 btn btn-outline-primary" id="favorite">찜</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- footer 회사 정보 등 -->
+    <footer style="background-color: rgb(250,250,250);" class="foot p-5">
+        <div class="row ms-3">
+            <div class="col-1"></div>
+            <div class="col-5">
+                <div class="mb-1" style="font-size:18px; font-weight: bolder;">고객센터</div>
+                <div style="font-size:14px; font-weight: 200;">오전 9시 ~ 새벽 3시 운영</div>
+                <!-- // TODO 전화번호 옆에 전화기 아이콘 삽입하기. Font Awesome 에서 찾아보라고 함 -->
+                <div class="btn btn-outline-secondary mt-3"><i class="bi bi-phone"></i>1677-6290</div>
+                <div class="btn btn-outline-secondary mt-3 ms-3">카톡 문의</div>
+            </div>
+            <div class="col-1">
+                <div style="font-size:18px; font-weight: bolder;">회사</div>
+                <div class="mt-1">
+                    <a href="https://www.nextit.or.kr/origin.html"
+                        style="font-size:14px; font-weight: 400; color:grey;">회사 소개</a>
+                </div>
+            </div>
+            <div class="col-1">
+                <div style="font-size:18px; font-weight: bolder;">서비스</div>
+                <div class="mt-1">
+                    <a href="https://www.nextit.or.kr/origin.html"
+                        style="font-size:14px; font-weight: 400; color:grey;">공지사항</a>
+                </div>
+                <div class="mt-1">
+                    <a href="https://www.nextit.or.kr/origin.html"
+                        style="font-size:14px; font-weight: 400; color:grey;">FAQ</a>
+                </div>
+            </div>
+            <div class="col-1">
+                <div style="font-size:18px; font-weight: bolder;">혜택</div>
+                <a href="https://www.nextit.or.kr/origin.html"
+                    style="font-size:14px; font-weight: 400; color:grey;">마일리지 사용</a>
+                <div class="mt-1">
+                    <a href="https://www.nextit.or.kr/origin.html"
+                        style="font-size:14px; font-weight: 400; color:grey;">VIP 라운지</a>
+                </div>
+                <div class="mt-1">
+                    <a href="https://www.nextit.or.kr/origin.html"
+                        style="font-size:14px; font-weight: 400; color:grey;">쿠폰 사용 안내</a>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-1"></div>
+            <div class="col ms-4 mt-4" style="font-size:11px;">
+                <span>
+                    (주)트램<br>
+                    주소 : 대전 중구 계룡로 825 희영빌딩 2층 넥스트아이티교육센터 현관비밀번호:0909 | 대표이사 : 안승환 | 사업자등록번호 : 713-26-00858
+                    <a href="https://bizno.net/article/7132600858" style="font-weight: 700;">사업자정보확인</a><br>
+                    전자우편주소 : letmeknow@tram.co.kr | 통신판매번호 : 2021-중국심천-0019 | 관광사업자 등록번호 : 제1025-24호 | 전화번호 : 1677-6290
+                    | 호스팅서비스제공자에 상호 표시 : (주)트램<br>
+                    (주)트램은 통신중개판매자로서 통신판매의 당사자가 아니며, 상품의 예약, 이용 및 환불 등과 관련된 의무와 책임은 각 판매자에게 있으므로 저희에게 제발 연락하지 말아주세요.
+                </span>
+            </div>
+        </div>
+        <div class="row mt-3 ms-3">
+            <div class="col-1"></div>
+            <span class="col-1" style="font-size:11px;">
+                <a href="#">이용 약관</a>
+            </span>
+            <span class="col-1" style="font-size:11px;">
+                <a href="#" style="font-weight: 700;">개인정보처리방침</a>
+            </span>
+            <span class="col-1 ms-3" style="font-size:11px;">
+                <a href="#">소비자 분쟁해결 기준</a>
+            </span>
+            <span class="col-2 ms-4" style="font-size:11px;">
+                <a href="#">콘텐츠산업진흥법에 의한 표시</a>
+            </span>
+        </div>
+        <div class="row mt-5 ms-3">
+            <div class="col-1"></div>
+            <div class="col-3" style="font-size: 11px;">Copyright TRaM Company Corp. All rights reserved.<br>Therefore
+                if you try to copy ours, we never negociate.</div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./source/out_link/Util.js"></script>
+    <script>
+        // TODO
+        // 이용 안내, 취소 규정 등 내용 채우기
+        // 여기어때에서 긁어오기
+
+        let navData = JSON.parse(localStorage.getItem("navInfo"));
+        let nav = document.querySelector("#keyword");
+        let depart = document.querySelector("#departDate");
+        let arrive = document.querySelector("#arriveDate");
+
+        depart.value = navData[0];
+        arrive.value = navData[1];
+        nav.value = navData[2];
+
+        // 상품 구매 인원 수에 대한 값
+        let aNum = 0;
+        let bNum = 0;
+        let cNum = 0;
+        let dNum = 0;
+
+
+        let loginUser = getLoginAccount();
+        let productData = getSelectedProductInfo();
+        let check = 1; // 찜 버튼에 대한 스위치
+
+        const login = document.querySelector("#login");
+        LoginAndOut(login);
+
+
+        // TODO 
+        // 찜 상태가 Y 일때 찜 버튼이 활성화된 상태로 브라우저가 켜지면
+        // 찜 버튼을 2번        눌러야 Y 에서 N 으로 바뀌는 버그 해결
+        window.addEventListener("DOMContentLoaded", function () {
+            if (JSON.parse(localStorage.getItem("FavoriteList")) != null) {
+                let favoriteStatus = JSON.parse(localStorage.getItem("FavoriteList"))[0].favorite;
+                console.log(`초기 찜 상태 : ${favoriteStatus}`);
+
+                if (favoriteStatus == "Y") {
+                    console.log(`Y일때`);
+                    favorite.classList.remove("btn-outline-primary");
+                    favorite.classList.add("btn-primary");
+                } else {
+                    console.log(`N일때`);
+                    favorite.classList.remove("btn-primary");
+                    favorite.classList.add("btn-outline-primary");
+                }
+            }
+
+            let localName = document.querySelector("#localName");
+            localName.innerHTML = `<div>${productData.miniaddr}</div>`;
+
+            let productName = document.querySelector("#productName");
+            productName.innerHTML = `<h3>${productData.title}</h3>`
+
+
+        })
+
+
+        // TODO 리뷰 내용 채우기
+        let review = document.querySelector("#review");
+        // review.innerHTML = `${}`
+
+        // 상품 이미지 띄우기
+        const imgEl = document.querySelector("#showImg");
+        // TODO 상품 이미지 갤러리 형식으로 교체
+        // TODO 이미지 클릭 시 Modal 띄우기
+        imgEl.innerHTML += `<div class="col-12 border rounded py-3 ms-4 btn" style="width:1302px;">
+                                <div style="float:left">
+                                    <span><img src="${productData.img}" class="rounded" style="width:500px;"></span>
+                                    <span><img src="${productData.img}" class="rounded ms-1" style="width:150px;"></span>
+                                    <span><img src="${productData.img}" class="rounded ms-1" style="width:150px;"></span>
+                                    <span><img src="${productData.img}" class="rounded ms-1" style="width:150px;"></span>
+                                </div>                                              
+                            </div>`;
+
+        // const name = document.querySelector("#productName");
+        // name.innerHTML = `<div>
+        //                     <h3>${productData.title}</h3>
+        //                     <p>${productData.address}</p>
+        //                 </div>`
+
+        const logoMain = document.querySelector("#logoMain");
+        logoMain.addEventListener("click", function () {
+            window.open("1_main.html", "_self");
+        });
+
+        const wishlist = document.querySelector("#wishlist");
+        wishlist.addEventListener("click", function () {
+            window.open("5_wishlist.html", "_self");
+        });
+        const mytrip = document.querySelector("#mytrip");
+        mytrip.addEventListener("click", function () {
+            window.open("6-1_ActivityTransFood_reservation.html", "_self");
+        });
+
+        // 숙소 맵
+        // const map = document.querySelector("#productMap");
+        // map.innerHTML = ``;
+
+        // TODO 상품 페이지의 찜 버튼이 활성화된 상태면
+        // 새로고침하더라도 찜된 상태 유지하기(로그인 유지 기능과 흡사)
+        const favorite = document.querySelector("#favorite");
+        favorite.addEventListener("click", function () {
+            if (check == 1) {
+                productData.favorite = "Y"
+                favorite.classList.remove("btn-outline-primary");
+                favorite.classList.add("btn-primary");
+                updateFavorite(productData);
+                check = 0;
+
+            } else {
+                productData.favorite = "N"
+                favorite.classList.remove("btn-primary");
+                favorite.classList.add("btn-outline-primary");
+                updateFavorite(productData);
+                check = 1;
+            }
+        })
+
+        OnLogin();
+
+        // 로그인 여부에 따라 우측 상단 로그인 버튼 문구 교체
+        function OnLogin() {
+            if (loginUser == null) {
+                login.textContent = "로그인";
+            } else {
+                login.textContent = "로그아웃";
+            }
+        }
+
+
+        // 상품 정보 입력
+        // TODO object 에 대해서 random 으로 key 값을 뽑아서 선택하는 방법 확인
+        const dummy = JSON.parse(localStorage.getItem("productOption"));
+        const productOptionEl = document.querySelector("#productOption");
+
+        // 총 금액 계산
+        let = num = 0;
+
+        // TODO 상품 가격, 총 가격 1000 단위로 ',' 표기하도록 수정
+
+        productOptionEl.innerHTML = `
+        <div class="row mb-4">
+                                            <div class="col-1 mt-3">
+                                                <img src="${productData.img}" class="rounded" style="width:150px;">
+                                            </div>
+                                            <div class="col-10 ms-5 mt-5 text-center">
+                                                <div class="row ms-5">
+                                                    <div class="col-3 ms-5" style="font-size:20px; font-weight:700;">
+                                                        <span>${dummy.a[0]}</span>
+                                                    </div>
+                                                    <div class="col ms-5">
+                                                        <span style="font-size:20px;">${dummy.a[1]}<span style="font-size:small">원</span></span>
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <span id="a">
+                                                            <span>
+                                                                <button class="minus btn btn-outline-primary" style="width:40px;">-</button>
+                                                                    <span class="ms-3" id="aCount">${num}</span>
+                                                                <button class="plus btn btn-outline-primary ms-3" style="width:40px;">+</button>
+                                                            </span>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-4">
+                                            <div class="col-1 mt-3">
+                                                <img src="${productData.img}" class="rounded" style="width:150px;">
+                                            </div>
+                                            <div class="col-10 ms-5 mt-5 text-center">
+                                                <div class="row ms-5">
+                                                    <div class="col-3 ms-5" style="font-size:20px; font-weight:700;">
+                                                        <span>${dummy.b[0]}</span>
+                                                    </div>
+                                                    <div class="col ms-5">
+                                                        <span style="font-size:20px;">${dummy.b[1]}<span style="font-size:small">원</span></span>
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <span id="b">
+                                                            <span>
+                                                                <button class="minus btn btn-outline-primary" style="width:40px;">-</button>
+                                                                    <span class="ms-3" id="bCount">${num}</span>
+                                                                <button class="plus btn btn-outline-primary ms-3" style="width:40px;">+</button>
+                                                            </span>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-4">
+                                            <div class="col-1 mt-3">
+                                                <img src="${productData.img}" class="rounded" style="width:150px;">
+                                            </div>
+                                            <div class="col-10 ms-5 mt-5 text-center">
+                                                <div class="row ms-5">
+                                                    <div class="col-3 ms-5" style="font-size:20px; font-weight:700;">
+                                                        <span>${dummy.c[0]}</span>
+                                                    </div>
+                                                    <div class="col ms-5">
+                                                        <span style="font-size:20px;">${dummy.c[1]}<span style="font-size:small">원</span></span>
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <span id="c">
+                                                            <span>
+                                                                <button class="minus btn btn-outline-primary" style="width:40px;">-</button>
+                                                                    <span class="ms-3" id="cCount">${num}</span>
+                                                                <button class="plus btn btn-outline-primary ms-3" style="width:40px;">+</button>
+                                                            </span>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-4">
+                                            <div class="col-1 mt-3">
+                                                <img src="${productData.img}" class="rounded" style="width:150px;">
+                                            </div>
+                                            <div class="col-10 ms-5 mt-5 text-center">
+                                                <div class="row ms-5">
+                                                    <div class="col-3 ms-5" style="font-size:20px; font-weight:700;">
+                                                        <span>${dummy.d[0]}</span>
+                                                    </div>
+                                                    <div class="col ms-5">
+                                                        <span style="font-size:20px;">${dummy.d[1]}<span style="font-size:small">원</span></span>
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <span id="d">
+                                                            <span>
+                                                                <button class="minus btn btn-outline-primary" style="width:40px;">-</button>
+                                                                    <span class="ms-3" id="dCount">${num}</span>
+                                                                <button class="plus btn btn-outline-primary ms-3" style="width:40px;">+</button>
+                                                            </span>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        `
+
+        // local에 저장할 옵션명
+        let optionA = [];
+        let optionB = [];
+        let optionC = [];
+        let optionD = [];
+
+        // 옵션 a 에 대한 -, + 버튼 기능
+        let aCnt = document.querySelector("#aCount");
+        let aPlus = document.querySelector("#a .plus");
+        aPlus.addEventListener("click", function () {
+            if (aNum < 10) {
+                aCnt.innerText = ++aNum;
+                totalPrice.innerText = `${(aNum * dummy.a[1]) + (bNum * dummy.b[1]) + (cNum * dummy.c[1]) + (dNum * dummy.d[1])} 원`;
+                optionA.push(dummy.a[0]);
+
+                for (let i = 0; i < optionA.length; i++) {
+                    if (optionA[i] == dummy.a[0]) {
+                        optionA.splice(1, i);
+                    }
+                }
+                console.log(optionA);
+            } else {
+                alert("최대 신청 가능 수를 초과했습니다.");
+            }
+        })
+
+        let aMinus = document.querySelector("#a .minus");
+        aMinus.addEventListener("click", function () {
+            if (aNum > 0) {
+                aCnt.innerText = --aNum;
+                totalPrice.innerText = `${(aNum * dummy.a[1]) + (bNum * dummy.b[1]) + (cNum * dummy.c[1]) + (dNum * dummy.d[1])} 원`;
+
+                for (let i = 0; i < optionA.length; i++) {
+                    if (optionA[i] == dummy.a[0]) {
+                        optionA.splice(i, 1);
+                    }
+                }
+            }
+            console.log(optionA);
+        })
+
+        // 옵션 b 에 대한 -, + 버튼 기능
+        let bCnt = document.querySelector("#bCount");
+        let bPlus = document.querySelector("#b .plus");
+        bPlus.addEventListener("click", function () {
+            if (bNum < 10) {
+                bCnt.innerText = ++bNum;
+                totalPrice.innerText = `${(aNum * dummy.a[1]) + (bNum * dummy.b[1]) + (cNum * dummy.c[1]) + (dNum * dummy.d[1])} 원`;
+                optionB.push(dummy.b[0]);
+
+                for (let i = 0; i < optionB.length; i++) {
+                    if (optionB[i] == dummy.b[0]) {
+                        optionB.splice(1, i);
+                    }
+                }
+                console.log(optionB);
+            } else {
+                alert("최대 신청 가능 수를 초과했습니다.");
+            }
+        })
+
+        let bMinus = document.querySelector("#b .minus");
+        bMinus.addEventListener("click", function () {
+            if (bNum > 0) {
+                bCnt.innerText = --bNum
+                totalPrice.innerText = `${(aNum * dummy.a[1]) + (bNum * dummy.b[1]) + (cNum * dummy.c[1]) + (dNum * dummy.d[1])} 원`;
+                for (let i = 0; i < optionB.length; i++) {
+                    if (optionB[i] == dummy.b[0]) {
+                        optionB.splice(i, 1);
+                    }
+                }
+            }
+            console.log(optionB);
+        })
+
+        // 옵션 c 에 대한 -, + 버튼 기능
+        let cCnt = document.querySelector("#cCount");
+        let cPlus = document.querySelector("#c .plus");
+        cPlus.addEventListener("click", function () {
+            if (cNum < 10) {
+                cCnt.innerText = ++cNum;
+                totalPrice.innerText = `${(aNum * dummy.a[1]) + (bNum * dummy.b[1]) + (cNum * dummy.c[1]) + (dNum * dummy.d[1])} 원`;
+                optionC.push(dummy.c[0]);
+
+                for (let i = 0; i < optionC.length; i++) {
+                    if (optionC[i] == dummy.c[0]) {
+                        optionC.splice(1, i);
+                    }
+                }
+                console.log(optionC);
+            } else {
+                alert("최대 신청 가능 수를 초과했습니다.");
+            }
+        })
+
+        let cMinus = document.querySelector("#c .minus");
+        cMinus.addEventListener("click", function () {
+            if (cNum > 0) {
+                cCnt.innerText = --cNum
+                totalPrice.innerText = `${(aNum * dummy.a[1]) + (bNum * dummy.b[1]) + (cNum * dummy.c[1]) + (dNum * dummy.d[1])} 원`;
+                for (let i = 0; i < optionC.length; i++) {
+                    if (optionC[i] == dummy.c[0]) {
+                        optionC.splice(i, 1);
+                    }
+                }
+            }
+            console.log(optionC);
+
+
+        })
+
+        // 옵션 d 에 대한 -, + 버튼 기능
+        let dCnt = document.querySelector("#dCount");
+        let dPlus = document.querySelector("#d .plus");
+        dPlus.addEventListener("click", function () {
+            if (dNum < 10) {
+                dCnt.innerText = ++dNum;
+                totalPrice.innerText = `${(aNum * dummy.a[1]) + (bNum * dummy.b[1]) + (cNum * dummy.c[1]) + (dNum * dummy.d[1])} 원`;
+                optionD.push(dummy.d[0]);
+
+                for (let i = 0; i < optionD.length; i++) {
+                    if (optionD[i] == dummy.d[0]) {
+                        optionD.splice(1, i);
+                    }
+                }
+                console.log(optionD);
+            } else {
+                alert("최대 신청 가능 수를 초과했습니다.");
+            }
+        })
+
+        let dMinus = document.querySelector("#d .minus");
+        dMinus.addEventListener("click", function () {
+            if (dNum > 0) {
+                dCnt.innerText = --dNum
+                totalPrice.innerText = `${(aNum * dummy.a[1]) + (bNum * dummy.b[1]) + (cNum * dummy.c[1]) + (dNum * dummy.d[1])} 원`;
+                for (let i = 0; i < optionD.length; i++) {
+                    if (optionD[i] == dummy.d[0]) {
+                        optionD.splice(i, 1);
+                    }
+                }
+            }
+            console.log(optionD);
+        })
+
+
+        // 결제 페이지로 이동
+        const buyTicket = document.querySelector("#buyTicket");
+        buyTicket.addEventListener("click", function () {
+            if (loginUser == undefined) {
+                alert("로그인 후 이용해주세요.");
+                window.open("2_login.html", "_self");
+                return;
+            }
+
+            if (totalPrice.innerText == "0 원") {
+                alert("상품 옵션을 1개 이상 선택해주세요.");
+            } else {
+                // 구매자가 선택한 상품 정보 저장
+                let payPrice = (aNum * dummy.a[1]) + (bNum * dummy.b[1]) + (cNum * dummy.c[1]) + (dNum * dummy.d[1])
+                let option = []; // 구매자가 선택한 옵션들 모음
+                let number = aNum + bNum + cNum + dNum;
+
+                if (optionA.length != 0) {
+                    option.push(optionA[0]);
+                }
+                if (optionB.length != 0) {
+                    option.push(optionB[0]);
+                }
+                if (optionC.length != 0) {
+                    option.push(optionC[0]);
+                }
+                if (optionD.length != 0) {
+                    option.push(optionD[0]);
+                }
+
+                let conf = window.confirm(`선택하신 상품 : [ ${option} ] 이(가) 맞습니까?`);
+                if (conf) {
+                    let payProductInfo = {    "name": productData.title
+                                            , "price": payPrice
+                                            , "addr": productData.address
+                                            , "miniaddr": productData.miniaddr
+                                            , "tel": productData.tel
+                                            , "img": productData.img
+                                            , "option": option
+                                            , "number": number
+                                            , "date": navData 
+                                            };
+                    localStorage.setItem("ReserveTemp", JSON.stringify(payProductInfo));
+                    console.log(`저장된 상품 정보 => ${localStorage.getItem("ReserveTemp")}`);
+                    window.open("7_CheckPayment.html", "_self");
+                }
+            }
+        });
+    </script>
+    <script type="text/javascript"
+        src="//dapi.kakao.com/v2/maps/sdk.js?appkey=935e0cfcde7ce35b5efc895d01541054&libraries=services"></script>
+    <script>
+        var mapContainer = document.getElementById('map') // 지도를 표시할 div 
+        mapOption = {
+            center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+            level: 2 // 지도의 확대 레벨
+        };
+
+        // 지도를 생성합니다    
+        var map = new kakao.maps.Map(mapContainer, mapOption);
+
+        // 주소-좌표 변환 객체를 생성합니다
+        var geocoder = new kakao.maps.services.Geocoder();
+
+        let data = getSelectedProductInfo();
+        // 주소로 좌표를 검색합니다
+        geocoder.addressSearch(data.address, function (result, status) {
+
+            // 정상적으로 검색이 완료됐으면 
+            if (status === kakao.maps.services.Status.OK) {
+
+                var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+                // 결과값으로 받은 위치를 마커로 표시합니다
+                var marker = new kakao.maps.Marker({
+                    map: map,
+                    position: coords
+                });
+
+                // 인포윈도우로 장소에 대한 설명을 표시합니다
+                // var infowindow = new kakao.maps.InfoWindow({
+                //     content: '<div style="width:150px;text-align:center;padding:6px 0;">희영빌딩</div>'
+                // });
+                // infowindow.open(map, marker);
+
+                // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+                map.setCenter(coords);
+            }
+        });  
+    </script>
+    </script>
+</body>
+
+</html>
