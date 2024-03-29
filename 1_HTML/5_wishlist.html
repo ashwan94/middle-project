@@ -25,42 +25,25 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary m-3">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#"><img class="logo" src="./source/img/TRaM 로고_.png" style="width: 50px;"
-                    alt="이미지" id="logoMain"></a>
+    <!-- navigation bar -->
+    <nav class="navbar navbar-expand-lg" style="background-color: rgba(100,100,100,0.1);">
+        <div class="container-fluid mb-3">
+            <a class="navbar-brand" href="#"><img class="logo" src="./source/img/TRaM_logo.png"
+                    style="width: 50px; height:50px;" alt="이미지" id="logoMain"></a>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto">
-                    <li class="nav-item">
-                        <input type="text" placeholder="검색키워드">
-                    </li>
-                    <li class="nav-item">
-                        <input type="date">
-                        <input type="date">
-                    </li>
-                    <li class="nav-item dropdown ">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            인원
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        </ul>
-                    </li>
-                    <button type="button">검색</button>
-                    <li class="nav-item mt-1" style="margin-left: 320px;">
-                        <a class="nav-link" href="#">실시간 인기 검색어</a>
-                    </li>
                 </ul>
-                <form class="d-flex" role="search">
-                    <button class="btn btn-outline-success" type="button" style="width: 2vw;" id="wishlist">찜</button>
-                    <button class="btn btn-outline-success" type="button" style="width: 5vw;" id="mytrip">마이트립</button>
-                    <button class="btn btn-outline-success" type="button" style="width: 5vw;" id="login">로그인</button>
+                <div class="slider-container mt-3" style="width:10%; margin-right:650px;">
+                    <div class="slider-content" id="realKeyword">
+                    </div>
+                </div>
+                <form class="d-flex mt-3" role="search">
+                    <button class="btn mx-1" style="font-weight:700; font-size:15px;" type="button" style="width: 2vw;"
+                        id="wishlist">찜</button>
+                    <button class="btn mx-1" style="font-weight:700; font-size:15px;" type="button" style="width: 5vw;"
+                        id="mytrip">마이트립</button>
+                    <button class="btn mx-1" style="font-weight:700; font-size:15px;" type="button" style="width: 5vw;"
+                        id="login">로그인</button>
                 </form>
             </div>
         </div>
@@ -95,82 +78,84 @@
             </div>
         </div>
         <!-- footer 회사 정보 등 -->
-    <footer style="background-color: rgb(250,250,250);" class="foot p-5">
-        <div class="row ms-3">
-            <div class="col-1"></div>
-            <div class="col-5">
-                <div class="mb-1" style="font-size:18px; font-weight: bolder;">고객센터</div>
-                <div style="font-size:14px; font-weight: 200;">오전 9시 ~ 새벽 3시 운영</div>
-                <!-- // TODO 전화번호 옆에 전화기 아이콘 삽입하기. Font Awesome 에서 찾아보라고 함 -->
-                <div class="btn btn-outline-secondary mt-3"><i class="bi bi-phone"></i>1677-6290</div>
-                <div class="btn btn-outline-secondary mt-3 ms-3">카톡 문의</div>
-            </div>
-            <div class="col-1">
-                <div style="font-size:18px; font-weight: bolder;">회사</div>
-                <div class="mt-1">
+        <footer style="background-color: rgb(250,250,250);" class="foot p-5">
+            <div class="row ms-3">
+                <div class="col-1"></div>
+                <div class="col-5">
+                    <div class="mb-1" style="font-size:18px; font-weight: bolder;">고객센터</div>
+                    <div style="font-size:14px; font-weight: 200;">오전 9시 ~ 새벽 3시 운영</div>
+                    <!-- // TODO 전화번호 옆에 전화기 아이콘 삽입하기. Font Awesome 에서 찾아보라고 함 -->
+                    <div class="btn btn-outline-secondary mt-3"><i class="bi bi-phone"></i>1677-6290</div>
+                    <div class="btn btn-outline-secondary mt-3 ms-3">카톡 문의</div>
+                </div>
+                <div class="col-1">
+                    <div style="font-size:18px; font-weight: bolder;">회사</div>
+                    <div class="mt-1">
+                        <a href="https://www.nextit.or.kr/origin.html"
+                            style="font-size:14px; font-weight: 400; color:grey;">회사 소개</a>
+                    </div>
+                </div>
+                <div class="col-1">
+                    <div style="font-size:18px; font-weight: bolder;">서비스</div>
+                    <div class="mt-1">
+                        <a href="https://www.nextit.or.kr/origin.html"
+                            style="font-size:14px; font-weight: 400; color:grey;">공지사항</a>
+                    </div>
+                    <div class="mt-1">
+                        <a href="https://www.nextit.or.kr/origin.html"
+                            style="font-size:14px; font-weight: 400; color:grey;">FAQ</a>
+                    </div>
+                </div>
+                <div class="col-1">
+                    <div style="font-size:18px; font-weight: bolder;">혜택</div>
                     <a href="https://www.nextit.or.kr/origin.html"
-                        style="font-size:14px; font-weight: 400; color:grey;">회사 소개</a>
+                        style="font-size:14px; font-weight: 400; color:grey;">마일리지 사용</a>
+                    <div class="mt-1">
+                        <a href="https://www.nextit.or.kr/origin.html"
+                            style="font-size:14px; font-weight: 400; color:grey;">VIP 라운지</a>
+                    </div>
+                    <div class="mt-1">
+                        <a href="https://www.nextit.or.kr/origin.html"
+                            style="font-size:14px; font-weight: 400; color:grey;">쿠폰 사용 안내</a>
+                    </div>
                 </div>
             </div>
-            <div class="col-1">
-                <div style="font-size:18px; font-weight: bolder;">서비스</div>
-                <div class="mt-1">
-                    <a href="https://www.nextit.or.kr/origin.html"
-                        style="font-size:14px; font-weight: 400; color:grey;">공지사항</a>
-                </div>
-                <div class="mt-1">
-                    <a href="https://www.nextit.or.kr/origin.html"
-                        style="font-size:14px; font-weight: 400; color:grey;">FAQ</a>
-                </div>
-            </div>
-            <div class="col-1">
-                <div style="font-size:18px; font-weight: bolder;">혜택</div>
-                <a href="https://www.nextit.or.kr/origin.html"
-                    style="font-size:14px; font-weight: 400; color:grey;">마일리지 사용</a>
-                <div class="mt-1">
-                    <a href="https://www.nextit.or.kr/origin.html"
-                        style="font-size:14px; font-weight: 400; color:grey;">VIP 라운지</a>
-                </div>
-                <div class="mt-1">
-                    <a href="https://www.nextit.or.kr/origin.html"
-                        style="font-size:14px; font-weight: 400; color:grey;">쿠폰 사용 안내</a>
+            <div class="row mt-5">
+                <div class="col-1"></div>
+                <div class="col ms-4 mt-4" style="font-size:11px;">
+                    <span>
+                        (주)트램<br>
+                        주소 : 대전 중구 계룡로 825 희영빌딩 2층 넥스트아이티교육센터 현관비밀번호:0909 | 대표이사 : 안승환 | 사업자등록번호 : 713-26-00858
+                        <a href="https://bizno.net/article/7132600858" style="font-weight: 700;">사업자정보확인</a><br>
+                        전자우편주소 : letmeknow@tram.co.kr | 통신판매번호 : 2021-중국심천-0019 | 관광사업자 등록번호 : 제1025-24호 | 전화번호 :
+                        1677-6290
+                        | 호스팅서비스제공자에 상호 표시 : (주)트램<br>
+                        (주)트램은 통신중개판매자로서 통신판매의 당사자가 아니며, 상품의 예약, 이용 및 환불 등과 관련된 의무와 책임은 각 판매자에게 있으므로 저희에게 제발 연락하지 말아주세요.
+                    </span>
                 </div>
             </div>
-        </div>
-        <div class="row mt-5">
-            <div class="col-1"></div>
-            <div class="col ms-4 mt-4" style="font-size:11px;">
-                <span>
-                    (주)트램<br>
-                    주소 : 대전 중구 계룡로 825 희영빌딩 2층 넥스트아이티교육센터 현관비밀번호:0909 | 대표이사 : 안승환 | 사업자등록번호 : 713-26-00858
-                    <a href="https://bizno.net/article/7132600858" style="font-weight: 700;">사업자정보확인</a><br>
-                    전자우편주소 : letmeknow@tram.co.kr | 통신판매번호 : 2021-중국심천-0019 | 관광사업자 등록번호 : 제1025-24호 | 전화번호 : 1677-6290
-                    | 호스팅서비스제공자에 상호 표시 : (주)트램<br>
-                    (주)트램은 통신중개판매자로서 통신판매의 당사자가 아니며, 상품의 예약, 이용 및 환불 등과 관련된 의무와 책임은 각 판매자에게 있으므로 저희에게 제발 연락하지 말아주세요.
+            <div class="row mt-3 ms-3">
+                <div class="col-1"></div>
+                <span class="col-1" style="font-size:11px;">
+                    <a href="#">이용 약관</a>
+                </span>
+                <span class="col-1" style="font-size:11px;">
+                    <a href="#" style="font-weight: 700;">개인정보처리방침</a>
+                </span>
+                <span class="col-1 ms-3" style="font-size:11px;">
+                    <a href="#">소비자 분쟁해결 기준</a>
+                </span>
+                <span class="col-2 ms-4" style="font-size:11px;">
+                    <a href="#">콘텐츠산업진흥법에 의한 표시</a>
                 </span>
             </div>
-        </div>
-        <div class="row mt-3 ms-3">
-            <div class="col-1"></div>
-            <span class="col-1" style="font-size:11px;">
-                <a href="#">이용 약관</a>
-            </span>
-            <span class="col-1" style="font-size:11px;">
-                <a href="#" style="font-weight: 700;">개인정보처리방침</a>
-            </span>
-            <span class="col-1 ms-3" style="font-size:11px;">
-                <a href="#">소비자 분쟁해결 기준</a>
-            </span>
-            <span class="col-2 ms-4" style="font-size:11px;">
-                <a href="#">콘텐츠산업진흥법에 의한 표시</a>
-            </span>
-        </div>
-        <div class="row mt-5 ms-3">
-            <div class="col-1"></div>
-            <div class="col-3" style="font-size: 11px;">Copyright TRaM Company Corp. All rights reserved.<br>Therefore
-                if you try to copy ours, we never negociate.</div>
-        </div>
-    </footer>
+            <div class="row mt-5 ms-3">
+                <div class="col-1"></div>
+                <div class="col-3" style="font-size: 11px;">Copyright TRaM Company Corp. All rights
+                    reserved.<br>Therefore
+                    if you try to copy ours, we never negociate.</div>
+            </div>
+        </footer>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
         <script src="./source/out_link/Util.js"></script>
         <script>
@@ -179,7 +164,7 @@
             // 찜화면
             const logoMain = document.querySelector("#logoMain");
             logoMain.addEventListener("click", function () {
-                window.open("1_main.html", "_self");
+                window.open("index.html", "_self");
             });
             const login = document.querySelector("#login");
             login.addEventListener("click", function () {

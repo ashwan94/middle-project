@@ -5,7 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>productHotel</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="./source/out_link/RealTimeKeyword.css">
+    <link rel="stylesheet" href="./source/out_link/design.css">
     <style>
         li {
             list-style: none;
@@ -35,7 +38,7 @@
 
 <body>
     <!-- navigation bar -->
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <nav class="navbar navbar-expand-lg" style="background-color: rgba(100,100,100,0.1);">
         <div class="container-fluid mb-3">
             <a class="navbar-brand" href="#"><img class="logo" src="./source/img/TRaM_logo.png"
                     style="width: 50px; height:50px;" alt="이미지" id="logoMain"></a>
@@ -49,8 +52,13 @@
                         <input type="date" id="arriveDate" class="me-2" style="height:40px; width:120px;">
                     </li>
                     <button type="button" class="btn btn-outline-primary"
-                        style="margin-top:15px; width:50px; height:40px; font-size:12px; font-weight: 700;">검색</button>
+                        style="margin-top:15px; width:50px; height:40px; font-size:12px; font-weight: 700;"
+                        id="searchBtn">검색</button>
                 </ul>
+                <div class="slider-container mt-3" style="width:10%; margin-right:650px;">
+                    <div class="slider-content" id="realKeyword">
+                    </div>
+                </div>
                 <form class="d-flex mt-3" role="search">
                     <button class="btn mx-1" style="font-weight:700; font-size:15px;" type="button" style="width: 2vw;"
                         id="wishlist">찜</button>
@@ -62,9 +70,6 @@
             </div>
         </div>
     </nav>
-
-
-
 
     <div class="row mt-3">
         <!-- 좌측 여백 -->
@@ -90,93 +95,111 @@
                 <div class="col-2" style="font-weight: 200;">이메일</div>
                 <div class="row">
                     <div class="col-2">
-                        <input type="text" class="form-control" style="width:510px;" id="userID" disabled>
+                        <input type="text" class="form-control" style="width:27vw;" id="userID" disabled>
                     </div>
                 </div>
             </div>
-            <hr class="text-center mt-5" style="width:900px;">
-            <div class="mb-4 ">
-                <div class="ms-3 mt-3" style="font-size:17px; font-weight: 500;">결제 수단</div>
-                <div class="row ms-3 my-3">
-                    <!-- // TODO 은행사 로고 넣기 -->
-                    <div class="btn btn-outline-secondary col-3 m-1" style="width:120px; color:black"><img src="">네이버페이
-                    </div>
-                    <div class="btn btn-outline-secondary col-3 m-1" style="width:120px; color:black"><img src="">카카오페이
-                    </div>
-                    <div class="btn btn-outline-secondary col-3 m-1" style="width:120px; color:black"><img src="">하나페이
-                    </div>
-                    <div class="btn btn-outline-secondary col-2 m-1" style="width:120px; color:black"><img src="">토스페이
-                    </div>
-                    <div class="btn btn-outline-secondary col-4 m-1" style="width:130px; color:black"><img
-                            src="">신용/체크카드</div>
-                </div>
+            <hr class="text-center mt-5" style="width:96%;">
+            <div class="mb-4">
+                <div class="ms-3 mb-2" style="font-size:17px; font-weight: 500;">결제 수단</div>
                 <div class="row ms-3">
-                    <div class="btn btn-outline-secondary col-3 m-1" style="width:120px; color:black"><img src="">간편계좌이체
+                    <div class="btn btn-outline-success payBtn" style="width:13%; color:black;"><img
+                            src="./source/img/pay_icon/Naver_pay.png" style="width:95%;" class="mt-2">
                     </div>
-                    <div class="btn btn-outline-secondary col-3 m-1" style="width:120px; color:black"><img src="">PAYCO
+                    <div class="btn btn-outline-warning payBtn ms-2" style="width:13%; color:black;"><img
+                            src="https://i.namu.wiki/i/s8DGBIscZxHhwVz1GftELLqCUXihG__p-0_HIazUjHdacTJzuLt7AnxU377CnKVPk6XIjkAMmQgqTHni5Cvyj_7pKogaM_ltk28ojyOVuowdCPWgnGVYkmLr2I2edMgNVl8TJHfkbY-THsPpAMdgXw.svg"
+                            style="width:95%;" class="mt-2">
                     </div>
-                    <div class="btn btn-outline-secondary col-3 m-1" style="width:120px; color:black"><img src="">휴대폰 결제
+                    <div class="btn btn-outline-success payBtn ms-2" style="width:13%; color:black;"><img
+                            src="https://i.namu.wiki/i/24Tc94RmWkicd87ohPlxYEfacT4_WfQeg9-3_niao9GJqA5c4PomtwFK_U4TL_Tud1yf8F6laFJOLnclaEsYC5dvyyFCd4XVFBrfFXSuc8kils4a3BOvdbPLXvwv2zIrapz9R2AKVwn8ebFI7SC0bg.svg"
+                            style="width:95%; margin-top:12px;">
                     </div>
-                    <div class="btn btn-outline-secondary col-3 m-1" style="width:120px; color:black"><img src="">법인 결제
+                    <div class="btn btn-outline-primary payBtn ms-2" style="width:13%; color:black;"><img
+                            src="./source/img/pay_icon/Toss_Logo_Primary.png" style="width:100%; scale:1.4;">
                     </div>
-                    <div class="btn btn-outline-secondary col-3 m-1" style="width:130px; color:black" id="account"><img
-                            src="">무통장입금
+                    <div class="btn btn-outline-secondary payBtn ms-2 pt-3" style="width:13%; color:black;"><img>신용/체크카드
                     </div>
                 </div>
+                <div class="row ms-3 mt-3">
+                    <div class="btn btn-outline-secondary payBtn" style="width:13%; padding-top:15px; padding-bottom:15px; color:black;"><img>법인카드
+                    </div>
+                    <div class="btn btn-outline-secondary payBtn ms-2" style="width:13%; padding-top:15px; padding-bottom:15px; color:black;"><img>간편계좌이체
+                    </div>
+                    <div class="btn btn-outline-secondary payBtn ms-2" style="width:13%; padding-top:15px; padding-bottom:15px; color:black;"><img>PAYCO
+                    </div>
+                    <div class="btn btn-outline-secondary payBtn ms-2" style="width:13%; padding-top:15px; padding-bottom:15px; color:black;"><img>휴대폰 결제
+                    </div>
+                    <div class="btn btn-outline-secondary bg-primary ms-2" style="width:13%; padding-top:15px; padding-bottom:15px; color:white;" id="accounts"><img>무통장 입금
+                    </div>
+                </div>
+                <div class="ms-3 mt-2" style="font-size:13px; color:red;">죄송합니다. 현재 서비스 준비 중입니다. 결제는 '무통장 입금'만 가능합니다.</div>
             </div>
             <!-- 취소 정책 -->
             <div class="mt-5" style="width:1058px;">
-                <div class="ms-3 mb-2" style="font-size:17px; font-weight: 500;">취소 정책</div>
-                <div><input type="text" class="form-control ms-2" style="width:900px; height:80px;" disabled
-                        value="해당 상품은 예약 취소 및 변경이 불가능해요.예약한 호텔이나 숙소에 체크인하지 않을 경우 노쇼(No-Show)로 간주되며, 예약 요금의 100%가 취소 요금으로 부과됩니다(호텔 정책에 따름)">
+                <div class="ms-3 mb-2" style="font-size:17px; font-weight: 500;">취소 정책
+                    <div class="form-control bg-light" style="width:46.5vw; height:7vh;" disabled>해당 상품은 예약 취소 및 변경이
+                        불가능해요.예약한 호텔이나 숙소에 체크인하지 않을 경우 노쇼(No-Show)로 간주되며, <br>예약 요금의 100%가 취소 요금으로 부과됩니다(호텔 정책에 따름)
+                    </div>
                 </div>
-                <!-- // TODO 줄이 기니까 개행 문자 삽입 -->
                 <hr style="width:900px;">
                 <div class="ms-3 mb-2" style="font-size:17px; font-weight: 500;">특별 요청 사항</div>
-                <div><input type="text" class="form-control ms-2" style="width:900px;" disabled
-                        value="요청 사항은 체크인 당일의 호텔 사정과 선택한 객실의 조건에 따라 적용이 어려울 수 있어요."></div>
+                <div class="form-control bg-light ms-3" style="width:46.5vw; height:4vh;" disabled>요청 사항은 체크인 당일의 호텔
+                    사정과 선택한 객실의 조건에 따라 적용이 어려울 수 있어요.
+                </div>
                 <div class="mt-3 row">
                     <div class="ms-3 mb-2" style="font-size:15px; font-weight: 500;">선호하는 침대 구성</div>
                     <div class="col-4 ms-3">
-                        <input type="checkbox"> 침대 1개
+                        <input name="checkBx" type="checkbox" value="침대 1개"> 침대 1개
                     </div>
                     <div class="col-4">
-                        <input type="checkbox" class="ms-2"> 침대 2개
+                        <input name="checkBx" type="checkbox" class="ms-2" value="침대 2개"> 침대 2개
                     </div>
                 </div>
                 <div class="mt-3 row">
                     <div class="ms-3 mb-2" style="font-size:15px; font-weight: 500;">선호하는 객실</div>
                     <div class="col-4 ms-3">
-                        <input type="checkbox"> 금연 객실
+                        <input name="checkBx" type="checkbox" value="금연 객실"> 금연 객실
                     </div>
                     <div class="col-4">
-                        <input type="checkbox" class="ms-2"> 흡연 객실
+                        <input name="checkBx" type="checkbox" class="ms-2" value="흡연 객실"> 흡연 객실
                     </div>
                 </div>
                 <div class="mt-3 row">
                     <div class="ms-3 mb-2" style="font-size:15px; font-weight: 500;">기타 요청 사항</div>
                     <div class="col-4 ms-3">
-                        <input type="checkbox"> 고층
+                        <input name="checkBx" type="checkbox" value="고층"> 고층
                     </div>
-                    <div class="col-4">
-                        <input type="checkbox" class="ms-2"> 늦은 체크인
+                    <div class="col-4 ms-2">
+                        <input name="checkBx" type="checkbox" value="늦은 체크인"> 늦은 체크인
                     </div>
                 </div>
-                <div class="ms-3 pt-3" style="font-size:17px; font-weight: 500;">숙소 안내 사항</div>
-                <div><input type="text" class="form-control ms-2 mb-5" style="width:900px;" disabled
-                        value="// TODO 다른 호텔 숙소 안내 사항 찾아서 채워넣기">
+                <div class="ms-3 pt-4" style="font-size:17px; font-weight: 500;">숙소 안내 사항</div>
+                <div class="form-control bg-light ms-3 mt-2 mb-3" style="width:46.5vw; height:8.5vh; color:red"
+                    disabled>
+                    객실은 체크인 시 배정되며 사진과 다를 수 있습니다.<br>
+                    만 19세 미만 청소년 혼숙은 법적으로 불가하며, 이에 대한 숙소의 입실 거부 시 취소/환불이 불가합니다.<br>
+                    만 19세 미만 청소년 예약에 대한 숙소의 입실 거부 시 취소/환불이 불가하오니, 예약 전 반드시 숙소에 확인하시기 바랍니다.
+                </div>
+                <div class="ms-3 pt-4" style="font-size:17px; font-weight: 500;">취소 및 환불 규정</div>
+                <div class="form-control bg-light ms-3 mt-2 mb-3" style="width:46.5vw; height:18vh; color:red" disabled>
+                    이 숙소의 취소 규정은 "취소 불가능"입니다.<br>
+                    당일예약은 체크인 시각의 3시간전까지, 미리예약은 체크인 날짜의 1일전까지 취소 불가능합니다.<br>
+                    연박예약의 경우 취소(일부 날짜만 취소)할 수 없습니다.<br>
+                    숙소 사정에 의한 취소 시 0% 환불 가능합니다.<br>
+                    모텔은 예약 직후 1시간 이내에는 취소가 불가능합니다.(단, 예약 시점이 체크인 시간을 이미 넘긴 경우엔 15분 이내에만 취소 가능합니다.)<br>
+                    예약 직후 1시간이내라 하더라도 입실(체크인) 시간 경과 시 취소/환불 불가합니다.<br>
                 </div>
             </div>
         </div>
         <!-- 우측 결제 상품 정보 -->
-        <div class="col-2 ms-5 mt-3 card" style="height:750px;">
+        <div class="col-2 ms-5 mt-5 pb-3 card" style="height:30%;">
             <h5 class="ms-3 mt-3 mb-2" style="font-weight: 600;" id="hotelTitle"></h5>
-            <div class="ms-3 mb-4" id="local" style="font-size: 15px; color:rgb(100,100,100);"></div>
+            <div class="ms-3 mb-1" id="local" style="font-size: 15px; color:rgb(100,100,100);"></div>
             <div id="showImg" class="ms-2 text-center">
                 </h5>
             </div>
             <div class="row">
-                <div class="col-4 ms-3 mt-4" style="font-weight: 700; color:rgb(200,200,200);">객실</div>
+                <div class="col-4 ms-3 mt-4" style="font-weight: 700; color:rgb(200,200,200);">상품</div>
                 <div class="col-6 mt-4 text-center" id="room"></div>
             </div>
             <div class="row">
@@ -184,18 +207,17 @@
                 <div class="col-6 mt-4 text-center" id="date"></div>
             </div>
             <div class="row">
-                <div class="col-4 ms-3 mt-4" style="font-weight: 700; color:rgb(200,200,200);">인원</div>
+                <div class="col-4 ms-3 mt-4" style="font-weight: 700; color:rgb(200,200,200);">옵션</div>
                 <div class="col-6 mt-4 text-center" id="number"></div>
             </div>
             <div class="row">
                 <div class="col-3"></div>
-                <div class="col-8 mt-1 ms-3" style="font-size: 11px; color:red;">예약 인원과 실제 인원이 다를 경우 법적 처벌을 받을 수 있으니 신중히
-                    고민하고 결정하시길 권장드립니다.</div>
+                <div class="col-8 mt-1 ms-3" style="font-size: 11px; color:red;">해당 옵션 상품은 최대 4명까지 가능합니다.</div>
             </div>
-            <div class="row mb-3">
-                <div class="col-4 ms-3 mt-4" style="font-weight: 700; color:rgb(200,200,200);">옵션</div>
-                <div class="col-6 mt-4 text-center">무료 WiFi</div>
-            </div>
+            <!-- <div class="row mb-3">
+                <div class="col-4 ms-3 mt-4" style="font-weight: 700; color:rgb(200,200,200);">요청</div>
+                <div class="col-6 mt-4 text-center" id="optionName"></div>
+            </div> -->
             <hr>
             <div class="row">
                 <div class="col">
@@ -221,12 +243,24 @@
     <footer style="background-color: rgb(250,250,250);" class="foot p-5">
         <div class="row ms-3">
             <div class="col-1"></div>
-            <div class="col-5">
+            <div class="col-6">
                 <div class="mb-1" style="font-size:18px; font-weight: bolder;">고객센터</div>
                 <div style="font-size:14px; font-weight: 200;">오전 9시 ~ 새벽 3시 운영</div>
                 <!-- // TODO 전화번호 옆에 전화기 아이콘 삽입하기. Font Awesome 에서 찾아보라고 함 -->
-                <div class="btn btn-outline-secondary mt-3"><i class="bi bi-phone"></i>1677-6290</div>
-                <div class="btn btn-outline-secondary mt-3 ms-3">카톡 문의</div>
+                <div class="btn btn-outline-secondary mt-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-telephone-fill" style="margin:0 auto;" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                            d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z" />
+                    </svg><span class="ms-1">1677-6290</span>
+                </div>
+                <div class="btn btn-outline-secondary mt-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-chat-fill me-1" style="margin:0 auto;" viewBox="0 0 16 16">
+                        <path
+                            d="M8 15c4.418 0 8-3.134 8-7s-3.582-7-8-7-8 3.134-8 7c0 1.76.743 3.37 1.97 4.6-.097 1.016-.417 2.13-.771 2.966-.079.186.074.394.273.362 2.256-.37 3.597-.938 4.18-1.234A9 9 0 0 0 8 15" />
+                    </svg>카톡 문의
+                </div>
             </div>
             <div class="col-1">
                 <div style="font-size:18px; font-weight: bolder;">회사</div>
@@ -267,7 +301,8 @@
                     (주)트램<br>
                     주소 : 대전 중구 계룡로 825 희영빌딩 2층 넥스트아이티교육센터 현관비밀번호:0909 | 대표이사 : 안승환 | 사업자등록번호 : 713-26-00858
                     <a href="https://bizno.net/article/7132600858">사업자정보확인</a><br>
-                    전자우편주소 : letmeknow@tram.co.kr | 통신판매번호 : 2021-중국심천-0019 | 관광사업자 등록번호 : 제1025-24호 | 전화번호 : 1677-6290
+                    전자우편주소 : letmeknow@tram.co.kr | 통신판매번호 : 2024-창훈태완용석-0019 | 관광사업자 등록번호 : 제1025-24호 | 전화번호 :
+                    1677-6290
                     | 호스팅서비스제공자에 상호 표시 : (주)트램<br>
                     (주)트램은 통신중개판매자로서 통신판매의 당사자가 아니며, 상품의 예약, 이용 및 환불 등과 관련된 의무와 책임은 각 판매자에게 있으므로 저희에게 제발 연락하지 말아주세요.
                 </span>
@@ -299,9 +334,44 @@
     <script src="./source/out_link/Util.js"></script>
     <script src="./source/out_link/dummyData.js"></script>
     <script>
-        // TODO
-        // 이용 안내, 취소 규정 등 내용 채우기
-        // 여기어때에서 긁어오기
+
+        // main 을 기준으로 실시간 검색어 내용 고정
+        const realKeywordEl = document.querySelector("#realKeyword");
+        let tempData = JSON.parse(localStorage.getItem("RealTimeKeyword"));
+        tempData.forEach(el => {
+            realKeywordEl.innerHTML += `<a class="slider-item" href="#" style="font-weight: 200; font-size: 15px;">${el}</a>`;
+        })
+
+        // nav 캘린더
+        let navData = JSON.parse(localStorage.getItem("navInfo"));
+        let nav = document.querySelector("#keyword");
+        let depart = document.querySelector("#departDate");
+        let arrive = document.querySelector("#arriveDate");
+
+        depart.value = navData[0];
+        arrive.value = navData[1];
+        nav.value = navData[2];
+
+        let today = new Date();
+        let year = today.getFullYear();
+        let month = today.getMonth() + 1;
+        let day = today.getDate();
+
+        month = (month < 10 ? "0" : "") + month;
+        day = (day < 10 ? "0" : "") + day;
+
+        let formattedDate = year + "-" + month + "-" + day;
+
+        // 달력에서 현재 날짜로부터 과거는 선택 불가능
+        departDate.addEventListener("click", function () {
+            // console.log(formattedDate);
+            departDate.setAttribute("min", formattedDate);
+        })
+        arriveDate.addEventListener("click", function () {
+            console.log(formattedDate);
+            arriveDate.setAttribute("min", departDate.value);
+        })
+
 
         let loginUser = getLoginAccount();
         let dummy = product_dummy;
@@ -314,23 +384,22 @@
         // 4 : 연락처
         // 5 : 이미지
         // 6 : 객실 유형
-        // 7 : 인원 수(옵션 선택 개수)
+        // 7 : 인원 수(옵션 선택 개수) TODO 인원 수, 옵션 선택 개수 수정하기
         // 8 : 예약 날짜(출발, 도착)
 
-        let navData = JSON.parse(localStorage.getItem("navInfo"));
-        let nav = document.querySelector("#keyword");
-        let arrive = document.querySelector("#arriveDate");
-        let depart = document.querySelector("#departDate");
-
-        depart.value = navData[0];
-        arrive.value = navData[1];
-        nav.value = navData[2];
-
         const title = document.querySelector("#hotelTitle");
-        title.innerText = `${productData[0]}`
+        title.innerText = `${productData.name}`
 
         const login = document.querySelector("#login");
         LoginAndOut(login);
+
+        // nav 검색 버튼 클릭 시 
+        const searchBtn = document.querySelector("#searchBtn");
+        searchBtn.addEventListener("click", function () {
+            let arr = [depart.value, arrive.value, nav.value];
+            localStorage.setItem("navInfo", JSON.stringify(arr));
+            window.history.back();
+        })
 
         // 유저 이름
         let userName = document.querySelector("#userName");
@@ -354,14 +423,14 @@
 
         // 인원
         let number = document.querySelector("#number");
-        number.innerText = `${productData.number} 명`
+        number.innerText = `${productData.number} 개`
 
         // 가격
         let totalPrice = document.querySelector("#totalPrice");
-        totalPrice.innerText = `${productData.price}원`;
+        totalPrice.innerText = `${productData.price}`;
 
         // 무통장입금 창 띄우기
-        let account = document.querySelector("#account");
+        let account = document.querySelector("#accounts");
         account.addEventListener("click", function () {
             let data = "";
             for (let i = 0; i < dummy.accounts.length; i++) {
@@ -371,17 +440,13 @@
         })
 
 
-        // TODO 리뷰 내용 채우기
-        let review = document.querySelector("#review");
-        // review.innerHTML = `${}`
-
         // 상품 이미지 띄우기
         const imgEl = document.querySelector("#showImg");
-        imgEl.innerHTML = `<div><img src="${productData.img}" class="rounded" style="width:250px;"></div>`;
+        imgEl.innerHTML = `<div><img src="${productData.img}" class="rounded" style="width:15vw; height:20vh;"></div>`;
 
         const logoMain = document.querySelector("#logoMain");
         logoMain.addEventListener("click", function () {
-            window.open("1_main.html", "_self");
+            window.open("index.html", "_self");
         });
 
         const wishlist = document.querySelector("#wishlist");
@@ -394,12 +459,25 @@
         });
 
 
-        console.log(productData);
-
-        // TODO 상품 페이지의 찜 버튼이 활성화된 상태면
-        // 새로고침하더라도 찜된 상태 유지하기(로그인 유지 기능과 흡사)
         const pay = document.querySelector("#pay");
         pay.addEventListener("click", function () {
+            const checkBx = document.querySelectorAll("input[name='checkBx']:checked");
+            if (checkBx.length !== 0) {
+                let arr = [];
+                checkBx.forEach((e) => {
+                    arr.push(e.value);
+                });
+                let request = { "request": arr };
+                let before = localStorage.getItem("askData");
+
+                if (before == null) {
+                    localStorage.setItem("askData", JSON.stringify(request));
+                } else {
+                    let data = JSON.parse(localStorage.getItem("askData"));
+                    localStorage.setItem("askData", JSON.stringify(data));
+                }
+            }
+
             let conf = window.confirm("결제하시겠습니까?");
             if (conf) {
                 let reserveTemp = JSON.parse(localStorage.getItem("ReserveTemp"));
@@ -408,16 +486,12 @@
                 if (reserveHistory == null) {
                     // 최초 1번은 조건없이 값을 넣기
                     // 딱 1번만 object 를 [ ] 로 감싸기!!!!!!!
-                    let arr = [reserveTemp]; 
+                    let arr = [reserveTemp];
                     localStorage.setItem("ReserveHistory", JSON.stringify(arr));
                 } else {
                     reserveHistory.push(reserveTemp);
                     localStorage.setItem("ReserveHistory", JSON.stringify(reserveHistory));
                 }
-
-                // alert(`임시\n${reserveTemp}`);
-                // alert(`저장된 것\n${reserveHistory}`);
-                alert(`최종\n${JSON.parse(localStorage.getItem("ReserveHistory"))}`);
 
                 localStorage.removeItem("navInfo");
                 localStorage.removeItem("ProductInfo");
@@ -451,10 +525,9 @@
                 login.textContent = "로그아웃";
             }
         }
-
-
-
     </script>
+    <script src="./source/out_link/RealTimeKeyword.js"></script>
+    <!-- 실검 js 파일을 맨 마지막에 읽어줘야 정상 작동함 -->
 </body>
 
 </html>

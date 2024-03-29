@@ -4,30 +4,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>마이트립</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="./source/out_link/RealTimeKeyword.css">
     <link rel="stylesheet" href="./source/out_link/design.css">
-    <link rel="stylesheet" href="./source/out_link/design.css">
+    <style>
+        li {
+            list-style: none;
+            margin-top: 15px;
+        }
+
+        .logo {
+            height: 5vh;
+        }
+
+        #productName {
+            margin-left: -25px;
+            padding: 0 auto;
+        }
+
+        .foot {
+            color: rgba(0, 0, 0, 0.5);
+        }
+
+        a {
+            text-decoration: none;
+            color: rgb(100, 100, 100);
+            font-weight: 700;
+        }
+    </style>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary m-3">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#"><img class="logo" src="./source/img/TRaM_logo.png" style="width: 50px;"
-                    alt="이미지" id="logoMain"></a>
+    <!-- navigation bar -->
+    <nav class="navbar navbar-expand-lg" style="background-color: rgba(100,100,100,0.1);">
+        <div class="container-fluid mb-3">
+            <a class="navbar-brand" href="#"><img class="logo" src="./source/img/TRaM_logo.png"
+                    style="width: 50px; height:50px;" alt="이미지" id="logoMain"></a>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto">
-                    <li class="nav-item">
-                        <input type="text" placeholder="검색키워드" id="keyword">
+                    <li class="nav-item me-3">
+                        <input type="text" placeholder="검색" style="height:40px; width:250px;" id="keyword">
                     </li>
                     <li class="nav-item">
-                        <input type="date" id="departDate">
-                        <input type="date" id="arriveDate">
+                        <input type="date" id="departDate" class="me-1" style="height:40px; width:120px;">
+                        <input type="date" id="arriveDate" class="me-2" style="height:40px; width:120px;">
                     </li>
-                    <button type="button" class="btn btn-outline-primary">검색</button>
+                    <button type="button" class="btn btn-outline-primary"
+                        style="margin-top:15px; width:50px; height:40px; font-size:12px; font-weight: 700;"
+                        id="searchBtn">검색</button>
                 </ul>
-                <form class="d-flex" role="search">
+                <div class="slider-container mt-3" style="width:10%; margin-right:650px;">
+                    <div class="slider-content" id="realKeyword">
+                    </div>
+                </div>
+                <form class="d-flex mt-3" role="search">
                     <button class="btn mx-1" style="font-weight:700; font-size:15px;" type="button" style="width: 2vw;"
                         id="wishlist">찜</button>
                     <button class="btn mx-1" style="font-weight:700; font-size:15px;" type="button" style="width: 5vw;"
@@ -38,29 +70,26 @@
             </div>
         </div>
     </nav>
+
     <div class="container mt-5">
         <div class="row">
             <div class="col-2 h-100 border rounded">
-                <h4 class="m-3">마이트립</h4>
+                <h4 class="mt-3 ms-3" style="font-weight: 900; font-size:25px;">마이트립</h4>
                 <div class="pt-2 text-center">
                     <div>
-                        <a href="">예정된 여행</a>
+                        <a style="font-weight:bolder;">
+                            <a id="schedule" class="btn">예정된 여행</a>
+                        </a>
                     </div>
-                    <div>
-                        <a href="">지난 여행</a>
+                    <div class="mt-2">
+                        <a style="font-weight: bolder;">
+                            <a id="pass" class="btn">지난 여행</a>
+                        </a>
                     </div>
-                    <!-- <div>
-                        <a href="">취소된 여행</a>
-                    </div> -->
-
-                    <!-- <h4 class="mt-5">숙소</h4>
-                    <div>
-                        <a href="6-2_Accommodation_reservation.html">숙소 예약</a>
-                    </div> -->
                 </div>
-                <h4 class="m-3 mt-5">내 정보</h4>
+                <h4 class="m-3 mt-4" style="font-weight: 900; font-size:25px;">내 정보</h4>
                 <div class="text-center mb-3">
-                    <a href="8_myPage.html">정보 조회</a>
+                    <a href="#" style="font-weight: bolder;" id="viewInfo">정보 조회</a>
                 </div>
             </div>
             <div class="col ps-5">
@@ -77,12 +106,24 @@
     <footer style="background-color: rgb(250,250,250);" class="foot p-5">
         <div class="row ms-3">
             <div class="col-1"></div>
-            <div class="col-5">
+            <div class="col-6">
                 <div class="mb-1" style="font-size:18px; font-weight: bolder;">고객센터</div>
                 <div style="font-size:14px; font-weight: 200;">오전 9시 ~ 새벽 3시 운영</div>
                 <!-- // TODO 전화번호 옆에 전화기 아이콘 삽입하기. Font Awesome 에서 찾아보라고 함 -->
-                <div class="btn btn-outline-secondary mt-3"><i class="bi bi-phone"></i>1677-6290</div>
-                <div class="btn btn-outline-secondary mt-3 ms-3">카톡 문의</div>
+                <div class="btn btn-outline-secondary mt-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-telephone-fill" style="margin:0 auto;" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                            d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z" />
+                    </svg><span class="ms-1">1677-6290</span>
+                </div>
+                <div class="btn btn-outline-secondary mt-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-chat-fill me-1" style="margin:0 auto;" viewBox="0 0 16 16">
+                        <path
+                            d="M8 15c4.418 0 8-3.134 8-7s-3.582-7-8-7-8 3.134-8 7c0 1.76.743 3.37 1.97 4.6-.097 1.016-.417 2.13-.771 2.966-.079.186.074.394.273.362 2.256-.37 3.597-.938 4.18-1.234A9 9 0 0 0 8 15" />
+                    </svg>카톡 문의
+                </div>
             </div>
             <div class="col-1">
                 <div style="font-size:18px; font-weight: bolder;">회사</div>
@@ -123,7 +164,8 @@
                     (주)트램<br>
                     주소 : 대전 중구 계룡로 825 희영빌딩 2층 넥스트아이티교육센터 현관비밀번호:0909 | 대표이사 : 안승환 | 사업자등록번호 : 713-26-00858
                     <a href="https://bizno.net/article/7132600858">사업자정보확인</a><br>
-                    전자우편주소 : letmeknow@tram.co.kr | 통신판매번호 : 2021-중국심천-0019 | 관광사업자 등록번호 : 제1025-24호 | 전화번호 : 1677-6290
+                    전자우편주소 : letmeknow@tram.co.kr | 통신판매번호 : 2024-창훈태완용석-0019 | 관광사업자 등록번호 : 제1025-24호 | 전화번호 :
+                    1677-6290
                     | 호스팅서비스제공자에 상호 표시 : (주)트램<br>
                     (주)트램은 통신중개판매자로서 통신판매의 당사자가 아니며, 상품의 예약, 이용 및 환불 등과 관련된 의무와 책임은 각 판매자에게 있으므로 저희에게 제발 연락하지 말아주세요.
                 </span>
@@ -154,6 +196,7 @@
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
     <script src="./source/out_link/Util.js"></script>
+    <script src="./source/out_link/dummyData.js"></script>
     <script>
         // --------------- 6_예약 화면 기능 구현 ---------------
         let loginUser = getLoginAccount();
@@ -161,19 +204,65 @@
 
         // 결제완료된 상품 정보 가져옴
         let productData = JSON.parse(localStorage.getItem("ReserveHistory"));
-        console.log(`결제 완료된 상품 리스트\n${productData}`);
 
         const login = document.querySelector("#login");
         LoginAndOut(login);
 
         OnLogin();
 
+        // nav 캘린더
+        let depart = document.querySelector("#departDate");
+        let arrive = document.querySelector("#arriveDate");
+
+        // nav 캘린더
+        let today = new Date();
+        let year = today.getFullYear();
+        let month = today.getMonth() + 1;
+        let day = today.getDate();
+
+        month = (month < 10 ? "0" : "") + month;
+        day = (day < 10 ? "0" : "") + day;
+
+        let formattedDate = year + "-" + month + "-" + day;
+
+        // 달력에서 현재 날짜로부터 과거는 선택 불가능
+        const departDate = document.querySelector("#departDate");
+        const arriveDate = document.querySelector("#arriveDate");
+        departDate.value = formattedDate;
+        arriveDate.value = formattedDate;
+        departDate.addEventListener("click", function () {
+            departDate.setAttribute("min", formattedDate);
+        })
+        arriveDate.addEventListener("click", function () {
+            console.log(formattedDate);
+            arriveDate.setAttribute("min", departDate.value);
+        })
+
+
+        // nav 검색 버튼 클릭 시 
+        const searchBtn = document.querySelector("#searchBtn");
+        searchBtn.addEventListener("click", function () {
+            let arr = [depart.value, arrive.value, nav.value];
+            localStorage.setItem("navInfo", JSON.stringify(arr));
+            window.history.back();
+        })
+
+        if (login.innerText == "로그인") {
+            alert("로그인 후 사용가능한 페이지 입니다!");
+            window.open("2_login.html", "_self");
+        }
+
+        // main 을 기준으로 실시간 검색어 내용 고정
+        const realKeywordEl = document.querySelector("#realKeyword");
+        let tempData = JSON.parse(localStorage.getItem("RealTimeKeyword"));
+        tempData.forEach(el => {
+            realKeywordEl.innerHTML += `<a class="slider-item" href="#" style="font-weight: 200; font-size: 15px;">${el}</a>`;
+        })
+
+        // 예약내역 보이는 곳
+        const contentEl = document.querySelector("#content");
+
         window.addEventListener("DOMContentLoaded", function () {
-            // 선택된 상품의 모든 정보 가져옴
-
-            // TODO
-            // 구매 상품이 아니기 때문에 추후 변경해야됨
-
             // TODO
             // System 상 오늘 날짜를 기준으로 기간이 지나면
             // 자동으로 '지난 여행' 카테고리 종속되도록 하기
@@ -191,48 +280,226 @@
             // 현재 예약 내역은 마이트립에서만 조회할 수 있도록 조치하기
 
             // method 하나 만들어서 1,2,3 return 받은 값으로
-            // 과거, 현재, 미래 구분하기
+            // 과거, 현재, 미래 구분
 
             // 결제된 모든 정보 조회
-            const contentEl = document.querySelector("#content");
+
+            // 처음 화면에 보여지는건 오늘 여행(초록색)
+            // TODO 예정/지난 여행 클릭 후 하단 '내 정보 조회' 버튼이 죽었음
             for (let i = 0; i < productData.length; i++) {
-                contentEl.innerHTML += `<div class="row card p-4 mb-3">
-                                            <div class="col-12">
-                                                <div><h3 style="font-weight:bolder;">${productData[i].name}</h3>${productData[i].miniaddr}</div>
-                                                    <img src="${productData[i].img}" class="my-3" style="width:300px;">
-                                                    <div class="row">
-                                                        <div class="col-3" style="font-size:17px; font-weight:bolder">체크인</div>
-                                                            <div class="col-3" style="font-size:17px; font-weight:bolder">체크아웃</div>
-                                                                <div class="row mb-3">
-                                                                    <div class="col-3">${productData[i].date[0]}</div>
-                                                                    <div class="col-3 ms-2">${productData[i].date[1]}</div>
-                                                                </div>
-                                                                <div class="row">
-                                                                    <div class="col-3" style="font-size:17px; font-weight:bolder">옵션</div>
-                                                                    <div class="col-3 ms-2" style="font-size:17px; font-weight:bolder">연락처</div>
-                                                                        <div class="row mb-3">
-                                                                            <div class="col-6">${productData[i].tel}</div>
-                                                                        <div class="col-3 ms-3">${productData[i].addr}</div>
-                                                                        </div>
-                                                                <p style="font-size:17px; font-weight:bolder">${productData[i].price}원</p>
-                                                            <div class="text-center">
-                                                                <button class="btn btn-outline-primary col-2" type="button">문의하기</button>
-                                                                <button class="btn btn-outline-primary col-2 ms-3" type="button">리뷰 작성</button>
+                if (productData[i].date[0] <= formattedDate && formattedDate <= productData[i].date[1]) {
+                    contentEl.innerHTML += `<div class="row card mb-3" style="border-radius: 20px;">
+                                                <div class="btn text-start" style="border-top-left-radius: 20px; color:white; border-top-right-radius:20px; background-color: #87cefa;">여행 중</div>
+                                                <div class="p-3">
+                                                    <div class="col">
+                                                        <div><h3 style="font-weight:bolder;">${productData[i].name}</h3>${productData[i].miniaddr}</div>
+                                                        <div class="row">
+                                                            <div class="col-3">
+                                                                <img src="${productData[i].img}" class="my-3 rounded" style="width:100%; height:12rem">
                                                             </div>
+                                                            <div class="col">
+                                                                <div class="row mt-3">
+                                                                    <div class="col-4" style="font-size:17px; font-weight:bolder">체크인</div>
+                                                                    <div class="col-4" style="font-size:17px; font-weight:bolder">체크아웃</div>
+                                                                    <div class="row mb-3">
+                                                                        <div class="col-4">${productData[i].date[0]}</div>
+                                                                        <div class="col-4 ms-2">${productData[i].date[1]}</div>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col-4" style="font-size:17px; font-weight:bolder">옵션</div>
+                                                                            <div class="col-5 ms-2" style="font-size:17px; font-weight:bolder">연락처</div>
+                                                                            <div class="row mb-3">
+                                                                                <div class="col-4">${productData[i].option}</div>
+                                                                                <div class="col-5 ms-3">${productData[i].tel}</div>
+                                                                                </div>
+                                                                                </div>
+                                                                                </div>
+                                                                                </div>
+                                                                                </div>
+                                                                                </div>
+                                                                                </div>
+                                                                                <div class="row text-center ms-4 mb-3" style="border-top:1px solid rgb(200,200,200); width:96%;">
+                                                                                    <div class="mt-2 mb-3 text-primary" style="font-size:25px; font-weight:bolder;">${productData[i].price}</div>
+                                                                                    <div class="col-3"></div>
+                                                                                </div>
+                                                                        </div>
+                                                </div>
+                                            </div>`;
+                }
+            }
+            // 특별 추가 요청 내용 입력
+            // let askData = JSON.parse(localStorage.getItem("askData")).request;
+            // let request = document.querySelectorAll(".request");
+            // // TODO 띄어쓰기 또는 ',' 삽입
+            // askData.forEach(data => {
+            //     request.forEach(el => {
+            //         el.innerText += data;
+            //     })
+            // })
+        })
+
+
+
+        // 예정된 여행, 지난 여행 버튼 받기
+        const schedule = document.querySelector("#schedule");
+        const pass = document.querySelector("#pass");
+
+
+
+        // 예정된 여행 버튼 눌렀을 때
+        schedule.addEventListener("click", function () {
+            // 비워주고
+            contentEl.innerHTML = "";
+            // 오늘보다 미래에 일이면 실행 (파란색)
+            for (let i = 0; i < productData.length; i++) {
+                if (formattedDate < productData[i].date[0]) {
+                    contentEl.innerHTML += `<div class="row card mb-3" style="border-radius: 20px;">
+                                                <div class="btn text-start" style="border-top-left-radius: 20px; color:white; border-top-right-radius:20px; background-color: purple;">예정된 여행</div>
+                                                <div class="p-3">
+                                                    <div class="col">
+                                                        <div><h3 style="font-weight:bolder;">${productData[i].name}</h3>${productData[i].miniaddr}</div>
+                                                        <div class="row">
+                                                            <div class="col-3">
+                                                                <img src="${productData[i].img}" class="my-3 rounded" style="width:100%; height:12rem">
+                                                            </div>
+                                                            <div class="col">
+                                                                <div class="row mt-3">
+                                                                    <div class="col-4" style="font-size:17px; font-weight:bolder">체크인</div>
+                                                                    <div class="col-4" style="font-size:17px; font-weight:bolder">체크아웃</div>
+                                                                    <div class="row mb-3">
+                                                                        <div class="col-4">${productData[i].date[0]}</div>
+                                                                        <div class="col-4 ms-2">${productData[i].date[1]}</div>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col-4" style="font-size:17px; font-weight:bolder">옵션</div>
+                                                                            <div class="col-5 ms-2" style="font-size:17px; font-weight:bolder">연락처</div>
+                                                                            <div class="row mb-3">
+                                                                                <div class="col-4">${productData[i].option}</div>
+                                                                                <div class="col-5 ms-3">${productData[i].tel}</div>
+                                                                                </div>
+                                                                                </div>
+                                                                                </div>
+                                                                                </div>
+                                                                                </div>
+                                                                                </div>
+                                                                                </div>
+                                                                                <div class="row text-center ms-4 mb-3" style="border-top:1px solid rgb(200,200,200); width:96%;">
+                                                                                    <div class="mt-2 mb-3 text-primary" style="font-size:25px; font-weight:bolder;">${productData[i].price}</div>
+                                                                                    <div class="col-3"></div>
+                                                                                </div>
+                                                                        </div>
+                                                </div>
+                                            </div>`;
+                }
+            }
+        })
+
+        // 지난 여행 눌렀을때
+        pass.addEventListener("click", function () {
+            // 비워주고
+            contentEl.innerHTML = "";
+            // 오늘보다 과거의 일이면 (빨간색)
+            for (let i = 0; i < productData.length; i++) {
+                if (formattedDate > productData[i].date[1]) {
+                    contentEl.innerHTML += `<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                                                aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h1 class="modal-title fs-5" id="exampleModalLabel">
+                                                                <label>제목: </label><input type="text" id="reviewTitle"></h1>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                                aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <label>후기 작성하기: </label>
+                                                            <textarea name="review" id="reviewContent" cols="30" rows="10" id="reviewContent"></textarea>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary"
+                                                                data-bs-dismiss="modal">취소</button>
+                                                            <button type="button" class="btn btn-primary" id="submitReview">리뷰</button>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>`;
+                                            <div class="row card mb-3" style="border-radius: 20px;">
+                                                <div class="btn text-start" style="border-top-left-radius: 20px; color:white; border-top-right-radius:20px; background-color: grey;">지난 여행</div>
+                                                <div class="p-3">
+                                                    <div class="col">
+                                                        <div><h3 style="font-weight:bolder;">${productData[i].name}</h3>${productData[i].miniaddr}</div>
+                                                        <div class="row">
+                                                            <div class="col-3">
+                                                                <img src="${productData[i].img}" class="my-3 rounded" style="width:100%; height:12rem">
+                                                            </div>
+                                                            <div class="col">
+                                                                <div class="row mt-3">
+                                                                    <div class="col-4" style="font-size:17px; font-weight:bolder">체크인</div>
+                                                                    <div class="col-4" style="font-size:17px; font-weight:bolder">체크아웃</div>
+                                                                    <div class="row mb-3">
+                                                                        <div class="col-4">${productData[i].date[0]}</div>
+                                                                        <div class="col-4 ms-2">${productData[i].date[1]}</div>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col-4" style="font-size:17px; font-weight:bolder">옵션</div>
+                                                                            <div class="col-5 ms-2" style="font-size:17px; font-weight:bolder">연락처</div>
+                                                                            <div class="row mb-3">
+                                                                                <div class="col-4">${productData[i].option}</div>
+                                                                                <div class="col-5 ms-3">${productData[i].tel}</div>
+                                                                                </div>
+                                                                                </div>
+                                                                                </div>
+                                                                                </div>
+                                                                                </div>
+                                                                                </div>
+                                                                                </div>
+                                                                                <div class="row text-center ms-4 mb-3" style="border-top:1px solid rgb(200,200,200); width:96%;">
+                                                                                    <div class="mt-2 mb-3 text-primary" style="font-size:25px; font-weight:bolder;">${productData[i].price}</div>
+                                                                                    <div class="col-3">
+                                                                                        </div>
+                                                                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" style="width:50%">리뷰 작성</button>
+                                                                                </div>
+                                                                        </div>
+                                                </div>
+                                            </div>`;
+                }
             }
+
+            let submitReview = document.getElementById("submitReview");
+            let exampleModal = new bootstrap.Modal(document.getElementById("exampleModal"));
+            submitReview.addEventListener("click", function (e) {
+                // 리뷰 localStorage에 저장하기 (user_nickName, reviewTitle, reviewContent, today)
+                let reviewNickName = JSON.parse(localStorage.getItem("loginUser")).User_nickName;
+                let reviewTitle = document.querySelector("#reviewTitle");
+                let reviewContent = document.querySelector("#reviewContent");
+                // 로컬에 있는 리뷰정보를 가져오기
+                let getReview = JSON.parse(localStorage.getItem("review"));
+                console.log(getReview);
+                let reviewStr = {
+                    "name": reviewNickName,
+                    "title": reviewTitle.value,
+                    "content": reviewContent.value,
+                    "date": formattedDate
+                };
+                // 리뷰데이터에 푸시 리뷰정보 푸시하기
+                getReview.push(reviewStr);
+
+                localStorage.setItem("review", JSON.stringify(getReview));
+
+                // 모달 닫기
+                exampleModal.hide();
+
+                // 새로고침
+                e.preventDefault();
+            })
         })
+
 
         // 교통, 숙박, 액티비티 예약내역 화면
         const logoMain = document.querySelector("#logoMain");
         logoMain.addEventListener("click", function () {
-            window.open("1_main.html", "_self");
+            window.open("index.html", "_self");
         });
-
 
         const wishlist = document.querySelector("#wishlist");
         wishlist.addEventListener("click", function () {
@@ -251,9 +518,8 @@
                 login.textContent = "로그아웃";
             }
         }
-
-
     </script>
+    <script src="./source/out_link/RealTimeKeyword.js"></script>
 </body>
 
 </html>

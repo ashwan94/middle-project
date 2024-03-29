@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>여행을 잇다, TRaM</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./source/out_link/design.css">
+    <link rel="stylesheet" href="./source/out_link/RealTimeKeyword.css">
+    <!-- <link rel="stylesheet" href="./source/out_link/rolling.css"> -->
+    <style>
+        .p1 {
+            margin-top: 10px;
+        }
+
+        .login {
+            margin-top: 10px;
+        }
+
+        .menu {
+            margin-top: 20px;
+        }
+
+        .search {
+            margin-top: 20px;
+        }
+
+        .tri {
+            width: 100px;
+        }
+
+        .gif {
+            background-image: url("https://img.etnews.com/photonews/2204/1521491_20220414143203_709_0002.jpg");
+            background-repeat: no-repeat;
+            background-position: 50% 20%;
+            background-size:100vw 90vh;
+            height: 50vh;
+        }
+
+        .gg1:hover {
+            filter: brightness(0.5);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- navigation bar -->
+    <nav class="navbar navbar-expand-lg" style="background-color: rgba(100,100,100,0.1);">
+        <div class="container-fluid mb-3">
+            <a class="navbar-brand" href="#"><img class="logo" src="./source/img/TRaM_logo.png"
+                    style="width: 50px; height:50px;" alt="이미지" id="logoMain"></a>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto">
+                </ul>
+                <div class="slider-container mt-3" style="width:10%; margin-right:650px;">
+                    <div class="slider-content" id="realKeyword">
+                    </div>
+                </div>
+                <form class="d-flex mt-3" role="search">
+                    <button class="btn mx-1" style="font-weight:700; font-size:15px;" type="button" style="width: 2vw;"
+                        id="wishlist">찜</button>
+                    <button class="btn mx-1" style="font-weight:700; font-size:15px;" type="button" style="width: 5vw;"
+                        id="mytrip">마이트립</button>
+                    <button class="btn mx-1" style="font-weight:700; font-size:15px;" type="button" style="width: 5vw;"
+                        id="login">로그인</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <div class="gif">
+        <div style="color:white;">
+            <div
+                style="font-size:50px; font-weight: 900; position: relative; left: 93rem; top: 20rem; text-shadow: 3px 3px 3px black;">
+                여행을 잇다
+            </div>
+            <div
+                style="font-size:50px; font-weight: 900; position: relative; left: 99rem; top: 19rem; text-shadow: 3px 3px 3px black;">
+                TRaM
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col" style="background-color: rgb(250,250,250); height:10vh;">
+            <div class="position-relative">
+                <div class="text-center position-absolute start-50 translate-middle"
+                    style="border-radius: 10px; width:65vw;">
+                </div>
+            </div>
+            <div class="container-fluid">
+                <div class="row search m-1 py-1">
+                    <div class="col-2" style="margin-left: 5rem;"></div>
+                    <div class="col-4">
+                        <input type="text" style="border-radius: 10px; width:30vw; height:5vh; font-size:20px;"
+                            class="border border-1" placeholder="검색" id="keyword">
+                    </div>
+                    <label class="col-1 me-2 border border-1 bg-white" style="border-radius: 10px;">
+                        <input type="date" style="width:7vw; font-size:16px; height:5vh;" class="border-0 text-center"
+                            id="departDate">
+                    </label>
+                    <label class="col-1 border border-1 bg-white" style="border-radius: 10px;">
+                        <input type="date" style="width:7vw; font-size:16px; height:5vh;" class="border-0 text-center"
+                            id="arriveDate">
+                    </label>
+                    <div class="col-1">
+                        <button class="col-1 btn rounded border bg-white ms-3" style="height:5vh; width:6vw;"
+                            id="searchBtn">검색</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 숙박, 교통, 액티비티, 음식점 카테고리 -->
+    <div class="row menu mb-5" style="text-align: center;">
+        <div class="col-2"></div>
+        <div class="col-2" id="categoryHotel">
+            <a href="#">
+                <img src="https://wimg.mk.co.kr/meet/neds/2016/11/image__2016_785903_14788251462677228.jpg"
+                    style="width: 90%; height:100%; border-radius: 10px;" id="hotel" class="gg1">
+            </a>
+            <div style="position: relative; bottom: 7.5rem; margin-bottom:-50px;"></div>
+        </div>
+        <div class="col-2" id="categoryTrans">
+            <a href="#">
+                <img src="https://image.ajunews.com/content/image/2023/03/19/20230319174151432100.jpg"
+                    style="width: 90%; height:100%; border-radius: 10px;" id="trans" class="gg1">
+            </a>
+            <div style="position: relative; bottom: 7.5rem; margin-bottom:-50px;"></div>
+        </div>
+        <div class="col-2" id="categoryActivity">
+            <a href="#">
+                <img src="https://thumb.tidesquare.com/tour/public/product/PRV3000196287/PRD3000703517/origin/20230705080104665_alh6p.jpg?type=om_mo_big"
+                    style="width: 90%; height:100%; border-radius: 10px;" id="activity" class="gg1">
+            </a>
+            <div style="position: relative; bottom: 10rem; margin-bottom:-50px;"></div>
+        </div>
+        <div class="col-2" id="categoryFood">
+            <a href="#">
+                <img src="https://png.pngtree.com/thumb_back/fw800/background/20230902/pngtree-kimchi-tofu-boiled-on-a-stove-top-image_13181822.jpg"
+                    style="width: 90%; height:100%; border-radius: 10px;" id="food" class="gg1">
+            </a>
+            <div style="position: relative; bottom: 7.5rem; margin-bottom:-50px;"></div>
+        </div>
+    </div>
+    <!-- 이미지 슬라이드쇼 -->
+    <div id="carouselExample" class="carousel slide mt-3 p-3">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <a
+                    href="https://korean.visitkorea.or.kr/kfes/detail/fstvlDetail.do?fstvlCntntsId=220371a8-ec85-46b7-8bb0-30afa9a93a19&cntntsNm=%EA%B5%AC%ED%8C%94%EC%9D%BC%EB%8C%95%EB%8C%95%EC%9D%B4%EB%A0%88%EC%9D%B4%EC%8B%B1"><img
+                        src="./source/img/festivals/2_jeju_racing.png" class="d-block"
+                        style="margin:0 auto; border-radius: 10px; width:90vw; height:70vh;" alt="제주 구팔일 댕댕이 레이싱"></a>
+            </div>
+            <a href="https://www.nseoultower.co.kr/" class="carousel-item text-center">
+                <img src="./source/img/festivals/4_Nseoul_sakura.png" class="d-block"
+                    style="margin:0 auto; border-radius: 10px; width:90vw; height:70vh;" alt="N서울타워 2024 벚꽃 페스티벌">
+            </a>
+            <a href="https://www.koreanfolk.co.kr/event/event_now.asp?seq=207" class="carousel-item">
+                <img src="./source/img/festivals/3_gyeonggi_moonlight.jpg" class="d-block"
+                    style="margin:0 auto; border-radius: 10px; width:90vw; height:70vh;" alt="한국민속촌 야간개장">
+            </a>
+            <a href="https://xn--ok0b236bp0a.com/place/26851" class="carousel-item">
+                <img src="./source/img/festivals/daeduck_waterlight.png" class="d-block"
+                    style="margin:0 auto; border-radius: 10px; width:90vw; height:70vh;" alt="2024 대청호대덕뮤직페스티벌">
+            </a>
+            <a href="http://www.ansanfest.com/" class="carousel-item">
+                <img src="http://www.ansanfest.com/data/pub_pop/%EC%9E%AC%EB%8B%A8%ED%99%88%ED%8E%98%EC%9D%B4%EC%A7%80%20%EB%B0%B0%EB%84%881903px584px.jpg" class="d-block"
+                    style="margin:0 auto; border-radius: 10px; width:90vw; height:70vh;" alt="2024 대청호대덕뮤직페스티벌">
+            </a>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+    <!-- <div class="loop_cont mt-5">
+        <ul class="banner_list">
+        </ul>
+    </div> -->
+    <!-- <script src="./source/out_link/roling.js"></script> -->
+
+    <!-- footer 회사 정보 등 -->
+    <footer style="background-color: rgb(250,250,250);" class="foot p-5">
+        <div class="row ms-3">
+            <div class="col-1"></div>
+            <div class="col-6">
+                <div class="mb-1" style="font-size:18px; font-weight: bolder;">고객센터</div>
+                <div style="font-size:14px; font-weight: 200;">오전 9시 ~ 새벽 3시 운영</div>
+                <!-- // TODO 전화번호 옆에 전화기 아이콘 삽입하기. Font Awesome 에서 찾아보라고 함 -->
+                <div class="btn btn-outline-secondary mt-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-telephone-fill" style="margin:0 auto;" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                            d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z" />
+                    </svg><span class="ms-1">1677-6290</span>
+                </div>
+                <div class="btn btn-outline-secondary mt-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-chat-fill me-1" style="margin:0 auto;" viewBox="0 0 16 16">
+                        <path
+                            d="M8 15c4.418 0 8-3.134 8-7s-3.582-7-8-7-8 3.134-8 7c0 1.76.743 3.37 1.97 4.6-.097 1.016-.417 2.13-.771 2.966-.079.186.074.394.273.362 2.256-.37 3.597-.938 4.18-1.234A9 9 0 0 0 8 15" />
+                    </svg>카톡 문의
+                </div>
+            </div>
+            <div class="col-1">
+                <div style="font-size:18px; font-weight: bolder;">회사</div>
+                <div class="mt-1">
+                    <a href="https://www.nextit.or.kr/origin.html"
+                        style="font-size:14px; font-weight: 200; color:grey;">회사 소개</a>
+                </div>
+            </div>
+            <div class="col-1">
+                <div style="font-size:18px; font-weight: bolder;">서비스</div>
+                <div class="mt-1">
+                    <a href="https://www.nextit.or.kr/origin.html"
+                        style="font-size:14px; font-weight: 200; color:grey;">공지사항</a>
+                </div>
+                <div class="mt-1">
+                    <a href="https://www.nextit.or.kr/origin.html"
+                        style="font-size:14px; font-weight: 200; color:grey;">FAQ</a>
+                </div>
+            </div>
+            <div class="col-1">
+                <div style="font-size:18px; font-weight: bolder;">혜택</div>
+                <a href="https://www.nextit.or.kr/origin.html"
+                    style="font-size:14px; font-weight: 200; color:grey;">마일리지 사용</a>
+                <div class="mt-1">
+                    <a href="https://www.nextit.or.kr/origin.html"
+                        style="font-size:14px; font-weight: 200; color:grey;">VIP 라운지</a>
+                </div>
+                <div class="mt-1">
+                    <a href="https://www.nextit.or.kr/origin.html"
+                        style="font-size:14px; font-weight: 200; color:grey;">쿠폰 사용 안내</a>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-1"></div>
+            <div class="col ms-4 mt-4" style="font-size:11px;">
+                <span>
+                    (주)트램<br>
+                    주소 : 대전 중구 계룡로 825 희영빌딩 2층 넥스트아이티교육센터 현관비밀번호:0909 | 대표이사 : 안승환 | 사업자등록번호 : 713-26-00858
+                    <a href="https://bizno.net/article/7132600858">사업자정보확인</a><br>
+                    전자우편주소 : letmeknow@tram.co.kr | 통신판매번호 : 2024-창훈태완용석-0019 | 관광사업자 등록번호 : 제1025-24호 | 전화번호 :
+                    1677-6290
+                    | 호스팅서비스제공자에 상호 표시 : (주)트램<br>
+                    (주)트램은 통신중개판매자로서 통신판매의 당사자가 아니며, 상품의 예약, 이용 및 환불 등과 관련된 의무와 책임은 각 판매자에게 있으므로 저희에게 제발 연락하지 말아주세요.
+                </span>
+            </div>
+        </div>
+        <div class="row mt-3 ms-3">
+            <div class="col-1"></div>
+            <span class="col-1" style="font-size:11px;">
+                <a href="#">이용 약관</a>
+            </span>
+            <span class="col-1" style="font-size:11px;">
+                <a href="#">개인정보처리방침</a>
+            </span>
+            <span class="col-1 ms-3" style="font-size:11px;">
+                <a href="#">소비자 분쟁해결 기준</a>
+            </span>
+            <span class="col-2 ms-4" style="font-size:11px;">
+                <a href="#">콘텐츠산업진흥법에 의한 표시</a>
+            </span>
+        </div>
+        <div class="row mt-5 ms-3">
+            <div class="col-1"></div>
+            <div class="col-3" style="font-size: 11px;">Copyright TRaM Company Corp. All rights reserved.<br>Therefore
+                if you try to copy ours, we never negociate.</div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- <script src="./source/out_link/roling.js"></script> -->
+    <script src="./source/out_link/Util.js"></script>
+    <script src="./source/out_link/dummyData.js"></script>
+    <!-- <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js"
+        charset="utf-8"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript">
+        //  ---------------------- 네이버 로그인 callback url----------------------------
+        var naver_id_login = new naver_id_login("QPJAZvitp4r_uyBekVmj", "http://192.168.0.175:5500/1_HTML/1_main.html");
+
+        // 네이버 사용자 프로필 조회
+        naver_id_login.get_naver_userprofile("naverSignInCallback()");
+
+        // 접근 토큰 값 출력
+        let token = naver_id_login.oauthParams.access_token;
+
+
+        // 네이버 로그인 callback 함수
+        function naverSignInCallback() {
+
+            // 네이버 사용자 프로필 정보 가져오기
+            var email = naver_id_login.getProfileData('email');
+            var nickname = naver_id_login.getProfileData('nickname');
+
+            var userData = JSON.parse(localStorage.getItem('TRaM'));
+
+            // 새로운 사용자 정보 추가
+            userData.Users.push({
+                "User_no": userData.Users.length,
+                "User_id": email,
+                "User_pw": "*********",
+                "User_nickName": nickname,
+                "User_status": "Y",
+                "User_type": "G"
+            });
+
+            // 로컬 스토리지에 데이터 저장
+            localStorage.setItem('TRaM', JSON.stringify(userData));
+        }
+    </script> -->
+    <!-- <script>
+        // ----------------------- 롤링 배너 구현 -----------------------
+        // 롤링 배너 복제본 생성
+        let roller = document.querySelector('.rolling-list');
+        roller.id = 'roller1'; // 아이디 부여
+
+        let clone = roller.cloneNode(true)
+        // cloneNode : 노드 복제. 기본값은 false. 자식 노드까지 복제를 원하면 true 사용
+        clone.id = 'roller2';
+        document.querySelector('.wrap').appendChild(clone); // wrap 하위 자식으로 부착
+
+        document.querySelector('#roller1').style.left = '0px';
+        document.querySelector('#roller2').style.left = document.querySelector('.rolling-list ul').offsetWidth + 'px';
+        // offsetWidth : 요소의 크기 확인(margin을 제외한 padding값, border값까지 계산한 값)
+        roller.classList.add('original');
+        clone.classList.add('clone');
+    </script> -->
+    <script>
+        // ----------------------- 1_main 기능 구현 -----------------------
+        // 로그인된 사용자의 계정 정보
+        let loginUser = getLoginAccount();
+
+        // 메인화면
+        const login = document.querySelector("#login");
+        LoginAndOut(login);
+        OnLogin();
+        
+        //  let review = JSON.parse(localStorage.getItem("review"));
+        //  if (review == null) {
+        //      let reviewData = product_dummy.review;
+        //      localStorage.setItem("review", JSON.stringify(reviewData));
+        //  }
+
+        //  let reviewBanner = JSON.parse(localStorage.getItem("review"));
+        //  reviewBanner.forEach(data => {
+        //      bannerList.innerHTML += `<a href="#">
+        //                                  <li class="banner">
+        //                                      <div>${data.name}</div>
+        //                                      <div>${data.title}</div>
+        //                                      <div>${data.content}</div>
+        //                                      <div>${data.date}</div>
+        //                                  </li>
+        //                              </a>`
+        //  })
+
+        let reviewDummy = product_dummy.review;
+        let reviewData = JSON.parse(localStorage.getItem("reveiw"));
+        if(reviewData == null) {
+            localStorage.setItem("review", JSON.stringify(reviewDummy));
+        }
+        
+
+        // 마우스 호버할때 텍스트 출력
+        let foodEl = document.querySelector("#food");
+        foodEl.addEventListener("mouseover", function () {
+            let word = document.querySelector("#categoryFood div");
+            word.innerText = "음식점";
+            word.style.color="white";
+        })
+        foodEl.addEventListener("mouseout", function () {
+            let word = document.querySelector("#categoryFood div");
+            word.innerText = ""
+        })
+        let transEl = document.querySelector("#trans");
+        transEl.addEventListener("mouseover", function () {
+            let word = document.querySelector("#categoryTrans div");
+            word.innerText = "교통";
+            word.style.color="white";
+        })
+        transEl.addEventListener("mouseout", function () {
+            let word = document.querySelector("#categoryTrans div");
+            word.innerText = ""
+        })
+
+        let hotelEl = document.querySelector("#hotel");
+        hotelEl.addEventListener("mouseover", function () {
+            let word = document.querySelector("#categoryHotel div");
+            word.innerText = "숙박";
+            word.style.color="white";
+        })
+        hotelEl.addEventListener("mouseout", function () {
+            let word = document.querySelector("#categoryHotel div");
+            word.innerText = ""
+        })
+
+        let activityEl = document.querySelector("#activity");
+        activityEl.addEventListener("mouseover", function () {
+            let word = document.querySelector("#categoryActivity div");
+            word.innerText = "액티비티";
+            word.style.color="white";
+        })
+        activityEl.addEventListener("mouseout", function () {
+            let word = document.querySelector("#categoryActivity div");
+            word.innerText = ""
+        })
+
+        // main 을 기준으로 실시간 검색어 내용 고정
+        const realKeywordEl = document.querySelector("#realKeyword");
+        let tempData = JSON.parse(localStorage.getItem("RealTimeKeyword"));
+        if(tempData == null) {
+            let dummyData = product_dummy.realTimeKeyword;
+            let dadada = new Set();
+    
+            while (dadada.size < dummyData.length) {
+                let rand = Math.floor(Math.random() * dummyData.length);
+                dadada.add(dummyData[rand]);
+            }
+            let arr = [];
+            dadada.forEach((el) => {
+                arr.push(el);
+                realKeywordEl.innerHTML += `<a class="slider-item" href="#" style="font-weight: 200; font-size: 15px;">${el}</a>`;
+            });
+            localStorage.setItem("RealTimeKeyword", JSON.stringify(arr));
+        }else{
+            let display = JSON.parse(localStorage.getItem("RealTimeKeyword"));
+            display.forEach(el => {
+                realKeywordEl.innerHTML += `<a class="slider-item" href="#" style="font-weight: 200; font-size: 15px;">${el}</a>`;
+            })
+        }
+
+        const hotel = document.querySelector("#hotel");
+        hotel.addEventListener("click", function () {
+            window.open("4_totalSearch.html", "_self");
+            let checkStatus = { "check": [{ "say": "hotel" }] };
+            localStorage.setItem("checked", JSON.stringify(checkStatus));
+        });
+
+        const activity = document.querySelector("#activity");
+        activity.addEventListener("click", function () {
+            window.open("4_totalSearch.html", "_self");
+            let checkStatus = { "check": [{ "say": "activity" }] };
+            localStorage.setItem("checked", JSON.stringify(checkStatus));
+        });
+
+        const trans = document.querySelector("#trans");
+        trans.addEventListener("click", function () {
+            window.open("4_totalSearch.html", "_self");
+            let checkStatus = { "check": [{ "say": "trans" }] };
+            localStorage.setItem("checked", JSON.stringify(checkStatus));
+        });
+
+        const food = document.querySelector("#food");
+        food.addEventListener("click", function () {
+            window.open("4_totalSearch.html", "_self");
+            let checkStatus = { "check": [{ "say": "food" }] };
+            localStorage.setItem("checked", JSON.stringify(checkStatus));
+        });
+        const wishlist = document.querySelector("#wishlist");
+        wishlist.addEventListener("click", function () {
+            window.open("5_wishlist.html", "_self");
+        });
+        const mytrip = document.querySelector("#mytrip");
+        mytrip.addEventListener("click", function () {
+            window.open("6-1_ActivityTransFood_reservation.html", "_self");
+        });
+        const searchBtnEl = document.querySelector("#searchBtn");
+        searchBtnEl.addEventListener("click", function () {
+            window.open("4_totalSearch.html", "_self");
+            let checkStatus = { "check": [{ "say": "hotel activity trans food" }] };
+            localStorage.setItem("checked", JSON.stringify(checkStatus));
+
+            let keyword = document.querySelector("#keyword");
+            localStorage.setItem("navInfo", JSON.stringify([departDate.value, arriveDate.value, keyword.value]));
+            
+        })
+
+
+        // 검색창 현재날짜와 7일 후의 날짜 보이게 하기
+        const departDate = document.querySelector("#departDate");
+        const arriveDate = document.querySelector("#arriveDate");
+        // 현재날짜 변수로 선언해서 가져오기
+        // 날짜 yyyy-mm-dd 형식으로 바꿔주기
+        let today = new Date();
+        let year = today.getFullYear();
+        let month = today.getMonth() + 1;
+        let day = today.getDate();
+
+        month = (month < 10 ? "0" : "") + month;
+        day = (day < 10 ? "0" : "") + day;
+
+        let formattedDate = year + "-" + month + "-" + day;
+
+        // 7일 후를 보이게 하기위한 변수 선언
+        const oneWeek = new Date(today);
+        oneWeek.setDate(oneWeek.getDate() + 7);
+
+        // 현재 날짜와 7일 후의 날짜를 포맷
+        departDate.value = formatDate(today);
+        arriveDate.value = formatDate(oneWeek);
+
+        // 달력에서 현재 날짜로부터 과거는 선택 불가능
+        departDate.addEventListener("click", function () {
+            // console.log(formattedDate);
+            // TODO 상 : 이전 날짜 선택 막기 활성화
+            // departDate.setAttribute("min", formattedDate);
+        })
+        arriveDate.addEventListener("click", function () {
+            console.log(formattedDate);
+            arriveDate.setAttribute("min", departDate.value);
+        })
+
+        // 함수를 만들어 년, 월, 일을 리턴해줌
+        function formatDate(date) {
+            const year = date.getFullYear();
+            const month = (date.getMonth() + 1).toString().padStart(2, "0");
+            const day = date.getDate().toString().padStart(2, "0"); // 일이 10 미만일 때 앞에 0을 추가하여 두 자리로 만듭니다.
+            return `${year}-${month}-${day}`;
+        }
+
+        // 로그인 여부에 따라 우측 상단 로그인 버튼 문구 교체
+        function OnLogin() {
+            if (loginUser == null) {
+                login.textContent = "로그인";
+            } else {
+                login.textContent = "로그아웃";
+            }
+            if (token != null) {
+                login.textContent = "로그아웃";
+                token = null;
+            }
+        }
+    </script>
+    <script src="./source/out_link/RealTimeKeyword.js"></script>
+</body>
+
+</html>

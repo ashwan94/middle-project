@@ -33,73 +33,33 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary m-3">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#"><img class="logo" src="./source/img/TRaM_logo.png" style="width: 50px;"
-                    alt="이미지" id="logoMain"></a>
+    <!-- navigation bar -->
+    <nav class="navbar navbar-expand-lg" style="background-color: rgba(100,100,100,0.1);">
+        <div class="container-fluid mb-3">
+            <a class="navbar-brand" href="#"><img class="logo" src="./source/img/TRaM_logo.png"
+                    style="width: 50px; height:50px;" alt="이미지" id="logoMain"></a>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto">
-                    <li class="nav-item">
-                        <input type="text" placeholder="검색키워드">
-                    </li>
-                    <li class="nav-item">
-                        <input type="date">
-                        <input type="date">
-                    </li>
-                    <li class="nav-item dropdown ">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            인원
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        </ul>
-                    </li>
-                    <button type="button" class="btn btn-outline-success">검색</button>
-                    <li class="nav-item mt-1" style="margin-left: 320px;">
-                        <a class="nav-link" href="#">실시간 인기 검색어</a>
-                    </li>
                 </ul>
-                <form class="d-flex" role="search">
-                    <button class="btn btn-outline-success" type="button" style="width: 2vw;" id="wishlist">찜</button>
-                    <button class="btn btn-outline-success" type="button" style="width: 5vw;" id="mytrip">마이트립</button>
-                    <button class="btn btn-outline-success" type="button" style="width: 5vw;" id="login">로그인</button>
+                <div class="slider-container mt-3" style="width:10%; margin-right:650px;">
+                    <div class="slider-content" id="realKeyword">
+                    </div>
+                </div>
+                <form class="d-flex mt-3" role="search">
+                    <button class="btn mx-1" style="font-weight:700; font-size:15px;" type="button" style="width: 2vw;"
+                        id="wishlist">찜</button>
+                    <button class="btn mx-1" style="font-weight:700; font-size:15px;" type="button" style="width: 5vw;"
+                        id="mytrip">마이트립</button>
+                    <button class="btn mx-1" style="font-weight:700; font-size:15px;" type="button" style="width: 5vw;"
+                        id="login">로그인</button>
                 </form>
             </div>
         </div>
     </nav>
-    <div class="row justify-content-center">
-        <div class="col-4 mx-5 border border-5 p-5">
-            <h3 class="ms-3">내 정보</h3>
-            <div class="row">
-                <div class="col ms-4">
-                    <div class="my-3">
-                        <label>ID</label>
-                        <input type="text" name="nickName" id="nickName" class="row">
-                    </div>
-                    <div class="col"></div>
-                    <div class="my-3">
-                        <label>비밀번호</label>
-                        <input type="password" name="password" id="password" class="row">
-                    </div>
-                    <div class="my-3">
-                        <label>비밀번호 확인</label>
-                        <input type="password" name="pw" id="pw" class="row">
-                    </div>
-                </div>
-            </div>
-            <div class="d-flex gap-2 col-12">
-                <div>
-                    <button style="width: 100px;" class="btn btn-outline-success">취소</button>
-                </div>
-                <div>
-                    <button style="width: 100px;" class="btn btn-outline-success">완료</button>
-                </div>
+    <div class="row justify-content-center mt-5">
+        <div class="col-4 mx-5 border border-5 p-5" style="border-radius: 10px;">
+            <h3 class="ms-3 fw-bold p-2">내 정보</h3>
+            <div class="row card" id="myPage">
             </div>
             <hr width="100%" color="black">
             <div>
@@ -113,10 +73,11 @@
     <script>
         // 로그인된 사용자 계정 정보 가져옴
         let loginUser = getLoginAccount();
+
         // 마이페이지 화면
         const logoMain = document.querySelector("#logoMain");
         logoMain.addEventListener("click", function () {
-            window.open("1_main.html", "_self");
+            window.open("index.html", "_self");
         });
         const login = document.querySelector("#login");
         login.addEventListener("click", function () {
@@ -130,6 +91,39 @@
         mytrip.addEventListener("click", function () {
             window.open("6-1_ActivityTransFood_reservation.html", "_self");
         });
+        const resign = document.querySelector("#resign");
+        resign.addEventListener("click", function() {
+            window.open("9_resign.html", "_self");
+        })
+
+        // 로그인한 회원의 내정보 볼수있는 코딩
+        const myPage = document.querySelector("#myPage");
+     
+            let card = document.createElement("div");
+            card.classList.add("row");
+
+            card.innerHTML = `
+                <p>유저 넘버: ${loginUser.User_no}</p>
+                <p>유저 아이디: ${loginUser.User_id}</p>
+                <p>유저 비밀번호: ${loginUser.User_pw}</p>
+                <p>유저 닉네임: ${loginUser.User_nickName}</p>
+                <p>유저 상태: ${loginUser.User_status}</p>
+                <p>유저 권한: ${loginUser.User_type}</p>
+                `;
+                myPage.appendChild(card);
+
+                 // 로그인 여부에 따라 우측 상단 로그인 버튼 문구 교체
+                 OnLogin();
+
+
+
+        function OnLogin() {
+            if (loginUser == null) {
+                login.textContent = "로그인";
+            } else {
+                login.textContent = "로그아웃";
+            }
+        }
     </script>
 </body>
 
